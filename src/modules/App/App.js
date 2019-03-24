@@ -6,18 +6,16 @@ import Treemap from '../Treemap/Treemap';
 import * as Papa from 'papaparse';
 
 class App extends Component {
-  state = {}
-
-  componentDidMount() {
-    let parent = this
+  getData = (parent, transformData) => {
     let path = require("../../assets/data.csv")
     Papa.parse(path, {
       download: true,
       header: true,
       complete: function (results) {
         parent.setState({
-          data: results.data
+          fullData: results.data
         })
+        transformData()
       }
     });
   }
@@ -31,7 +29,7 @@ class App extends Component {
             <Route
               exact
               path="/treemap"
-              render={(props) => <Treemap data={this.state.data} />} />
+              render={(props) => <Treemap getData={this.getData} />} />
           </Switch>
         </div>
       </Router>
