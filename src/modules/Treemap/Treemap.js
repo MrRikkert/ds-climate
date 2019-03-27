@@ -12,8 +12,11 @@ class Treemap extends Component {
     }
 
     getColor = (node) => {
-        console.log(node)
-        return "hsl(10, 70%, 50%)"
+        return "nivo"
+    }
+
+    getLabel = (node) => {
+        return node.country + " (" + node.name + ")"
     }
 
     transformData = () => {
@@ -30,15 +33,18 @@ class Treemap extends Component {
                     children: [
                         {
                             name: "Gas",
-                            loc: d.co2_gas_e
+                            loc: d.co2_gas_e,
+                            country: d.country
                         },
                         {
                             name: "liquid",
-                            loc: d.co2_liquid_e
+                            loc: d.co2_liquid_e,
+                            country: d.country
                         },
                         {
                             name: "solid",
-                            loc: d.co2_solid_e
+                            loc: d.co2_solid_e,
+                            country: d.country
                         },
                     ]
                 }
@@ -70,14 +76,13 @@ class Treemap extends Component {
                     "bottom": 10,
                     "left": 10
                 }}
-                label="loc"
-                labelFormat=".0s"
+                label={this.getLabel}
                 labelSkipSize={12}
                 colorBy="name"
                 animate={true}
                 motionStiffness={90}
                 motionDamping={11}
-                leavesOnly={true} />
+                leavesOnly={false} />
         );
     }
 }
