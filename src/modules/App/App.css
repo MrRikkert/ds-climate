@@ -5,13 +5,11 @@
 }
 
 .sidenav {
-  background-color: red;
   flex: 1;
   margin-bottom: 0px;
 }
 
 #content {
-  background-color: lightblue;
   flex: 2;
   margin: 0px;
 }

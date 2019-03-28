@@ -69,10 +69,10 @@ class Treemap extends Component {
                 innerPadding={10}
                 outerPadding={3}
                 margin={{
-                    "top": 10,
-                    "right": 10,
-                    "bottom": 10,
-                    "left": 10
+                    "top": 20,
+                    "right": 30,
+                    "bottom": 20,
+                    "left": 15
                 }}
                 label={this.getLabel}
                 labelSkipSize={12}
