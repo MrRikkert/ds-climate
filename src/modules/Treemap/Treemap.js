@@ -24,7 +24,7 @@ class Treemap extends Component {
         return node.country + " (" + node.name + ")"
     }
 
-    transformData = () => {
+    async transformData() {
         let data = this.props.fullData
             .filter((d) => {
                 if (parseInt(d.year) === 2012 && this.props.filter.countries.indexOf(d.country) > -1) {
@@ -74,9 +74,9 @@ class Treemap extends Component {
                 outerPadding={3}
                 margin={{
                     "top": 20,
-                    "right": 30,
+                    "right": 0,
                     "bottom": 20,
-                    "left": 15
+                    "left": 20
                 }}
                 label={this.getLabel}
                 labelSkipSize={12}
