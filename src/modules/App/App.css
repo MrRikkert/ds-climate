@@ -5,11 +5,12 @@
 }
 
 .sidenav {
+  padding-top: 20px;
   flex: 1;
   margin-bottom: 0px;
 }
 
 #content {
-  flex: 2;
+  flex: 4;
   margin: 0px;
 }
