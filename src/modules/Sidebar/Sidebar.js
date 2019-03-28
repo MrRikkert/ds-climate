@@ -15,7 +15,7 @@ class SideBar extends Component {
                     placeholder="Type to search"
                     multi
                     clearable
-                    onChange={() => undefined}
+                    onChange={(values) => this.props.updateSelectedCountries(values)}
                     values={[]}
                     options={this.props.allCountries}
                 />

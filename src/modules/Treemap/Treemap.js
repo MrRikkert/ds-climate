@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { ResponsiveTreeMap } from 'nivo/es/components/charts/treemap'
 
 class Treemap extends Component {
     state = {
-        data: {}
+        data: {},
+        filter: {}
     }
 
     componentDidMount() {
@@ -12,16 +12,12 @@ class Treemap extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.fullData !== prevProps.fullData) {
+        if (this.props !== prevProps) {
+            this.setState({
+                filter: this.props.filter
+            })
             this.transformData()
         }
-        if (this.props.filter !== prevProps.filter) {
-            this.transformData()
-        }
-    }
-
-    getColor = (node) => {
-        return "nivo"
     }
 
     getLabel = (node) => {

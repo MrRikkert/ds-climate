@@ -9,13 +9,23 @@ class App extends Component {
   state = {
     fullData: [],
     filter: {
-      countries: ["Netherlands", "Belgium"],
+      countries: [],
     },
     allCountries: [],
   }
 
   componentDidMount() {
     this.getData()
+  }
+
+  updateSelectedCountries = (selected) => {
+    let filter = this.state.filter
+    filter.countries = selected.map((d) => {
+      return d.label
+    })
+    this.setState({
+      filter: filter
+    })
   }
 
   getData = () => {
@@ -70,7 +80,8 @@ class App extends Component {
               {this.renderRoutes()}
             </div>
             <SideBar
-              allCountries={this.state.allCountries} />
+              allCountries={this.state.allCountries}
+              updateSelectedCountries={this.updateSelectedCountries} />
           </div>
         </div>
       </Router>
