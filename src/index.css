@@ -2,7 +2,7 @@
   height: 100%;
 }
 
-#root div:first-child {
+#root > div:first-of-type {
   height: 100%;
 }
 
