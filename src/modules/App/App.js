@@ -3,6 +3,7 @@ import Navbar from "../Navbar/Navbar"
 import './App.css';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Treemap from '../Treemap/Treemap';
+import SideBar from '../Sidebar/Sidebar';
 import * as Papa from 'papaparse';
 
 class App extends Component {
@@ -20,17 +21,27 @@ class App extends Component {
     });
   }
 
+  renderRoutes = () => {
+    return (
+      <Switch>
+        <Route
+          exact
+          path="/treemap"
+          render={(props) => <Treemap getData={this.getData} />} />
+      </Switch>
+    )
+  }
+
   render() {
     return (
       <Router>
         <div>
-          <Navbar />
-          <Switch>
-            <Route
-              exact
-              path="/treemap"
-              render={(props) => <Treemap getData={this.getData} />} />
-          </Switch>
+          <div className="flex-container">
+            <div className="content" id="content">
+              {this.renderRoutes()}
+            </div>
+            <SideBar />
+          </div>
         </div>
       </Router>
     );

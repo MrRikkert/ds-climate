@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { TreeMap } from 'nivo/es/components/charts/treemap'
+import { ResponsiveTreeMap } from 'nivo/es/components/charts/treemap'
 
 class Treemap extends Component {
     state = {
@@ -61,10 +61,8 @@ class Treemap extends Component {
 
     render() {
         return (
-            <TreeMap
+            <ResponsiveTreeMap
                 root={this.state.data}
-                width={1000}
-                height={600}
                 value="loc"
                 identity="name"
                 colors="nivo"
