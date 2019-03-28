@@ -8,7 +8,16 @@ class Treemap extends Component {
     }
 
     componentDidMount() {
-        this.props.getData(this, this.transformData)
+        this.transformData()
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.fullData !== prevProps.fullData) {
+            this.transformData()
+        }
+        if (this.props.filter !== prevProps.filter) {
+            this.transformData()
+        }
     }
 
     getColor = (node) => {
@@ -20,9 +29,9 @@ class Treemap extends Component {
     }
 
     transformData = () => {
-        let data = this.state.fullData
+        let data = this.props.fullData
             .filter((d) => {
-                if (parseInt(d.year) === 2012 && (d.country === "Netherlands" || d.country === "Belgium")) {
+                if (parseInt(d.year) === 2012 && this.props.filter.countries.indexOf(d.country) > -1) {
                     return true
                 }
                 return false
@@ -53,7 +62,6 @@ class Treemap extends Component {
             name: "world",
             children: data
         }
-        console.log(data)
         this.setState({
             data: data
         })

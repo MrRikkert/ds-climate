@@ -4,14 +4,9 @@ import Select from "react-dropdown-select";
 
 class SideBar extends Component {
     state = {
-        options: []
+        options: [],
+        updates: 0
     };
-
-    componentDidMount() {
-        this.setState({
-            options: this.props.getCountries(this)
-        })
-    }
 
     render() {
         return (
@@ -22,7 +17,7 @@ class SideBar extends Component {
                     clearable
                     onChange={() => undefined}
                     values={[]}
-                    options={this.state.options}
+                    options={this.props.allCountries}
                 />
             </div>
         );

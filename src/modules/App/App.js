@@ -1,19 +1,25 @@
-import React, { Component } from 'react';
-import './App.css';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import Treemap from '../Treemap/Treemap';
-import SideBar from '../Sidebar/Sidebar';
 import * as Papa from 'papaparse';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import SideBar from '../Sidebar/Sidebar';
+import Treemap from '../Treemap/Treemap';
+import './App.css';
 
 class App extends Component {
   state = {
-    fullData: []
+    fullData: [],
+    filter: {
+      countries: ["Netherlands", "Belgium"],
+    },
+    allCountries: [],
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidMount() {
+    this.getData()
   }
 
-  getData = (parent, transformData) => {
+  getData = () => {
+    let parent = this
     let path = require("../../assets/data.csv")
     Papa.parse(path, {
       download: true,
@@ -22,9 +28,24 @@ class App extends Component {
         parent.setState({
           fullData: results.data
         })
-        transformData()
+        parent.getCountries()
       }
     });
+  }
+
+  getCountries = () => {
+    this.setState({
+      allCountries: this.state.fullData
+        .filter((d) => {
+          return parseInt(d.year) === 2012
+        })
+        .map((d) => {
+          return {
+            label: d.country,
+            value: d.country,
+          }
+        })
+    })
   }
 
   renderRoutes = () => {
@@ -34,38 +55,10 @@ class App extends Component {
           exact
           path="/treemap"
           render={(props) => <Treemap
-            getData={this.getData} />} />
+            fullData={this.state.fullData}
+            filter={this.state.filter} />} />
       </Switch>
     )
-  }
-
-  getCountries = (parent) => {
-    // return this.state.fullData.map((d) => {
-    //   return {
-    //     label: d.country,
-    //     value: d.country
-    //   }
-    // })
-
-    let path = require("../../assets/data.csv")
-    Papa.parse(path, {
-      download: true,
-      header: true,
-      complete: function (results) {
-        parent.setState({
-          options: results.data
-            .filter((d) => {
-              return parseInt(d.year) === 2012
-            })
-            .map((d) => {
-              return {
-                label: d.country,
-                value: d.country,
-              }
-            })
-        })
-      }
-    });
   }
 
   render() {
@@ -77,7 +70,7 @@ class App extends Component {
               {this.renderRoutes()}
             </div>
             <SideBar
-              getCountries={this.getCountries} />
+              allCountries={this.state.allCountries} />
           </div>
         </div>
       </Router>
