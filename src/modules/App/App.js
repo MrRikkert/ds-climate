@@ -9,13 +9,31 @@ class App extends Component {
   state = {
     fullData: [],
     filter: {
-      countries: [],
+      countries: ["Netherlands"],
+      relative: false,
     },
     allCountries: [],
   }
 
   componentDidMount() {
     this.getData()
+  }
+
+  getFilteredData = () => {
+    return this.state.fullData.filter((d) => {
+      if (parseInt(d.year) === 2012 && this.state.filter.countries.indexOf(d.country) > -1) {
+        return true
+      }
+      return false
+    })
+  }
+
+  setRelative = (event) => {
+    let filter = this.state.filter
+    filter.relative = !filter.relative
+    this.setState({
+      filter: filter,
+    })
   }
 
   updateSelectedCountries = (selected) => {
@@ -66,7 +84,8 @@ class App extends Component {
           path="/treemap"
           render={(props) => <Treemap
             fullData={this.state.fullData}
-            filter={this.state.filter} />} />
+            filter={this.state.filter}
+            getFilteredData={this.getFilteredData} />} />
       </Switch>
     )
   }
@@ -81,7 +100,9 @@ class App extends Component {
             </div>
             <SideBar
               allCountries={this.state.allCountries}
-              updateSelectedCountries={this.updateSelectedCountries} />
+              updateSelectedCountries={this.updateSelectedCountries}
+              setRelative={this.setRelative}
+              filter={this.state.filter} />
           </div>
         </div>
       </Router>

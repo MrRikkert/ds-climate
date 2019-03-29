@@ -19,6 +19,14 @@ class SideBar extends Component {
                     values={[]}
                     options={this.props.allCountries}
                 />
+                <label>
+                    hallo
+                    <input
+                        type="checkbox"
+                        name="Relative?"
+                        checked={this.props.filter.relative}
+                        onChange={this.props.setRelative} />
+                </label>
             </div>
         );
     }

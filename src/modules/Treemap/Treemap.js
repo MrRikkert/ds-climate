@@ -8,6 +8,9 @@ class Treemap extends Component {
     }
 
     componentDidMount() {
+        this.setState({
+            filter: this.props.filter
+        })
         this.transformData()
     }
 
@@ -25,30 +28,25 @@ class Treemap extends Component {
     }
 
     async transformData() {
-        let data = this.props.fullData
-            .filter((d) => {
-                if (parseInt(d.year) === 2012 && this.props.filter.countries.indexOf(d.country) > -1) {
-                    return true
-                }
-                return false
-            })
+        let relative = this.state.filter.relative
+        let data = this.props.getFilteredData()
             .map((d) => {
                 return {
                     name: d.country,
                     children: [
                         {
                             name: "Gas",
-                            loc: d.co2_gas_e,
+                            loc: relative ? d.co2_gas_e / d.population : d.co2_gas_e,
                             country: d.country
                         },
                         {
                             name: "liquid",
-                            loc: d.co2_liquid_e,
+                            loc: relative ? d.co2_liquid_e / d.population : d.co2_liquid_e,
                             country: d.country
                         },
                         {
                             name: "solid",
-                            loc: d.co2_solid_e,
+                            loc: relative ? d.co2_solid_e / d.population : d.co2_solid_e,
                             country: d.country
                         },
                     ]
