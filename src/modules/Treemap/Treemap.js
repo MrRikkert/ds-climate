@@ -12,6 +12,7 @@ class Treemap extends Component {
             filter: this.props.filter
         })
         this.transformData()
+        this.props.setTitle("CO2 emissions By fuel burned (kt)")
     }
 
     componentDidUpdate(prevProps) {
@@ -71,7 +72,7 @@ class Treemap extends Component {
                 innerPadding={10}
                 outerPadding={3}
                 margin={{
-                    "top": 20,
+                    "top": 10,
                     "right": 0,
                     "bottom": 20,
                     "left": 20

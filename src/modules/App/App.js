@@ -15,6 +15,7 @@ class App extends Component {
     },
     allCountries: [],
     animating: false,
+    title: "Please select a graph"
   }
 
   componentDidMount() {
@@ -33,6 +34,12 @@ class App extends Component {
         })
       }
     }, 500)
+  }
+
+  setTitle = (title) => {
+    this.setState({
+      title: title
+    })
   }
 
   getFilteredData = () => {
@@ -116,15 +123,17 @@ class App extends Component {
           render={(props) => <Treemap
             fullData={this.state.fullData}
             filter={this.state.filter}
-            getFilteredData={this.getFilteredData} />} />
+            getFilteredData={this.getFilteredData}
+            setTitle={this.setTitle} />} />
       </Switch>
     )
   }
 
   render() {
     return (
-      <Router className="hallo">
+      <Router>
         <div>
+          <div className="title-bar">{this.state.title}</div>
           <div className="flex-container">
             <div className="content" id="content">
               {this.renderRoutes()}
