@@ -8,13 +8,13 @@
 .sidenav {
   padding: 30px;
   margin-bottom: 0px;
-  width: 300px;
+  width: 400px;
   resize: horizontal;
 }
 
 .content {
   display: flex;
   margin: 0px;
-  width:  calc(100% - 300px);
+  width:  calc(100% - 400px);
   resize: horizontal;
 }

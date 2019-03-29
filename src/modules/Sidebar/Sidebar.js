@@ -5,7 +5,6 @@ import Select from "react-dropdown-select";
 class SideBar extends Component {
     state = {
         options: [],
-        updates: 0
     };
 
     render() {
@@ -33,11 +32,12 @@ class SideBar extends Component {
                         </label>
                     </li>
                     <li>
+                        <button onClick={this.props.ToggleYearTimer}>Toggle timer</button>
                         <input
                             type="range"
                             min="1970"
-                            max="2013"
-                            defaultValue={this.props.filter.year}
+                            max="2014"
+                            value={this.props.filter.year}
                             step="1"
                             onChange={this.props.changeYear} />
                         <label>{this.props.filter.year}</label>

@@ -11,13 +11,28 @@ class App extends Component {
     filter: {
       countries: ["Netherlands"],
       relative: false,
-      year: 2013,
+      year: 1970,
     },
     allCountries: [],
+    animating: false,
   }
 
   componentDidMount() {
     this.getData()
+
+    setInterval(() => {
+      if (this.state.filter.year < 2014 && this.state.animating) {
+        let filter = this.state.filter
+        filter.year = parseInt(filter.year) + 1
+        this.setState({
+          filter: filter
+        })
+      } else {
+        this.setState({
+          animating: false
+        })
+      }
+    }, 500)
   }
 
   getFilteredData = () => {
@@ -43,6 +58,12 @@ class App extends Component {
     filter.relative = !filter.relative
     this.setState({
       filter: filter,
+    })
+  }
+
+  ToggleYearTimer = () => {
+    this.setState({
+      animating: !this.state.animating
     })
   }
 
@@ -113,7 +134,8 @@ class App extends Component {
               updateSelectedCountries={this.updateSelectedCountries}
               setRelative={this.setRelative}
               filter={this.state.filter}
-              changeYear={this.changeYear} />
+              changeYear={this.changeYear}
+              ToggleYearTimer={this.ToggleYearTimer} />
           </div>
         </div>
       </Router>
