@@ -23,7 +23,7 @@ class SideBar extends Component {
                     </li>
                     <li>
                         <label>
-                            Relative?
+                            Relative? (divide by population)
                         <input
                                 type="checkbox"
                                 name="Relative?"
