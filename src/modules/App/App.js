@@ -11,6 +11,7 @@ class App extends Component {
     filter: {
       countries: ["Netherlands"],
       relative: false,
+      year: 2013,
     },
     allCountries: [],
   }
@@ -21,10 +22,19 @@ class App extends Component {
 
   getFilteredData = () => {
     return this.state.fullData.filter((d) => {
-      if (parseInt(d.year) === 2012 && this.state.filter.countries.indexOf(d.country) > -1) {
+      if (parseInt(d.year) === parseInt(this.state.filter.year) &&
+        this.state.filter.countries.indexOf(d.country) > -1) {
         return true
       }
       return false
+    })
+  }
+
+  changeYear = (event) => {
+    let filter = this.state.filter
+    filter.year = event.target.value
+    this.setState({
+      filter: filter
     })
   }
 
@@ -102,7 +112,8 @@ class App extends Component {
               allCountries={this.state.allCountries}
               updateSelectedCountries={this.updateSelectedCountries}
               setRelative={this.setRelative}
-              filter={this.state.filter} />
+              filter={this.state.filter}
+              changeYear={this.changeYear} />
           </div>
         </div>
       </Router>

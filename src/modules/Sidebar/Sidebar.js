@@ -24,8 +24,8 @@ class SideBar extends Component {
                     </li>
                     <li>
                         <label>
-                            hallo
-                    <input
+                            Relative?
+                        <input
                                 type="checkbox"
                                 name="Relative?"
                                 checked={this.props.filter.relative}
@@ -33,7 +33,14 @@ class SideBar extends Component {
                         </label>
                     </li>
                     <li>
-                        <input id="typeinp" type="range" min="1970" max="2013" defaultValue="2013" step="1" />
+                        <input
+                            type="range"
+                            min="1970"
+                            max="2013"
+                            defaultValue={this.props.filter.year}
+                            step="1"
+                            onChange={this.props.changeYear} />
+                        <label>{this.props.filter.year}</label>
                     </li>
                 </ul>
             </div>
