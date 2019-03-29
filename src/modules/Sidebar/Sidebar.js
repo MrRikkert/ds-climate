@@ -11,22 +11,31 @@ class SideBar extends Component {
     render() {
         return (
             <div className="sidenav">
-                <Select
-                    placeholder="Type to search"
-                    multi
-                    clearable
-                    onChange={(values) => this.props.updateSelectedCountries(values)}
-                    values={[]}
-                    options={this.props.allCountries}
-                />
-                <label>
-                    hallo
+                <ul className="filters-list">
+                    <li>
+                        <Select
+                            placeholder="Type to search"
+                            multi
+                            clearable
+                            onChange={(values) => this.props.updateSelectedCountries(values)}
+                            values={[]}
+                            options={this.props.allCountries}
+                        />
+                    </li>
+                    <li>
+                        <label>
+                            hallo
                     <input
-                        type="checkbox"
-                        name="Relative?"
-                        checked={this.props.filter.relative}
-                        onChange={this.props.setRelative} />
-                </label>
+                                type="checkbox"
+                                name="Relative?"
+                                checked={this.props.filter.relative}
+                                onChange={this.props.setRelative} />
+                        </label>
+                    </li>
+                    <li>
+                        <input id="typeinp" type="range" min="1970" max="2013" defaultValue="2013" step="1" />
+                    </li>
+                </ul>
             </div>
         );
     }
