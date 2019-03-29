@@ -80,8 +80,8 @@ class Treemap extends Component {
                 labelSkipSize={12}
                 colorBy="name"
                 animate={true}
-                motionStiffness={90}
-                motionDamping={11}
+                motionStiffness={200}
+                motionDamping={20}
                 leavesOnly={false} />
         );
     }
