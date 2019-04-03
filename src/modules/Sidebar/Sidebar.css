@@ -7,3 +7,7 @@
 .filters-list li {
     margin-bottom: 10px;
 }
+
+.accordion .accordion__item .accordion__button {
+    max-width: calc(100% - 36px);
+}

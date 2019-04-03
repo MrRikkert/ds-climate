@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Select from "react-dropdown-select";
+import "./CountrySelector.css"
 
 class CountrySelector extends Component {
 
