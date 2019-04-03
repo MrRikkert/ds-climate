@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import "./Sidebar.css"
-import CountrySelector from "./CountrySelector/CountrySelector"
-import YearSelector from "./YearSelector/YearSelector"
-import MetricSelector from "./MetricSelector/MetricSelector"
-import Collapsible from 'react-collapsible';
+import FilterPanel from "./FilterPanel/FilterPanel";
 import {
     Accordion,
     AccordionItem,
@@ -22,25 +19,15 @@ class SideBar extends Component {
     render() {
         return (
             <div className="sidenav">
-                <Accordion allowZeroExpanded >
-                    <AccordionItem>
+                <Accordion allowZeroExpanded preExpanded={["1"]} >
+                    <AccordionItem uuid={"1"}>
                         <AccordionItemHeading>
                             <AccordionItemButton>
-                                What harsh truths do you prefer to ignore?
+                                Filters
                     </AccordionItemButton>
                         </AccordionItemHeading>
                         <AccordionItemPanel>
-                            <ul className="filters-list">
-                                <li>
-                                    <CountrySelector {...this.props} />
-                                </li>
-                                <li>
-                                    <MetricSelector {...this.props} />
-                                </li>
-                                <li>
-                                    <YearSelector {...this.props} />
-                                </li>
-                            </ul>
+                            <FilterPanel {...this.props} />
                         </AccordionItemPanel>
                     </AccordionItem>
                 </Accordion>

@@ -1,13 +1,3 @@
-.filters-list {
-    list-style-type:none;
-    padding: 0;
-    margin: 0;
-}
-
-.filters-list li {
-    margin-bottom: 10px;
-}
-
 .accordion .accordion__item .accordion__button {
     max-width: calc(100% - 36px);
 }
