@@ -28,26 +28,37 @@ class Treemap extends Component {
         return node.country + " (" + node.name + ")"
     }
 
+    getDivider(row) {
+        switch (this.state.filter.metric.value) {
+            case 1:
+                return 1;
+            case 2:
+                return row.population
+            default:
+                return 1;
+        }
+    }
+
     async transformData() {
-        let relative = this.state.filter.relative
         let data = this.props.getFilteredData()
             .map((d) => {
+                let divider = this.getDivider(d)
                 return {
                     name: d.country,
                     children: [
                         {
                             name: "Gas",
-                            loc: relative ? d.co2_gas_e / d.population : d.co2_gas_e,
+                            loc: d.co2_gas_e / divider,
                             country: d.country
                         },
                         {
                             name: "liquid",
-                            loc: relative ? d.co2_liquid_e / d.population : d.co2_liquid_e,
+                            loc: d.co2_liquid_e / divider,
                             country: d.country
                         },
                         {
                             name: "solid",
-                            loc: relative ? d.co2_solid_e / d.population : d.co2_solid_e,
+                            loc: d.co2_solid_e / divider,
                             country: d.country
                         },
                     ]

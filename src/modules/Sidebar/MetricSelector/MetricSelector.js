@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
+import Select from "react-dropdown-select";
 
 class MetricSelector extends Component {
-
     render() {
         return (
             <React.Fragment>
-                <label>
-                    Relative? (divide by population)
-                        <input
-                        type="checkbox"
-                        name="Relative?"
-                        checked={this.props.filter.relative}
-                        onChange={this.props.setRelative} />
-                </label>
+                <Select
+                    searchable={false}
+                    placeholder="Type to search"
+                    onChange={(values) => this.props.updateSelectedMetric(values)}
+                    options={this.props.metrics}
+                    values={[this.props.filter.metric]}
+                />
             </React.Fragment>
         );
     }
