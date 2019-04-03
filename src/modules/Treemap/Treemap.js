@@ -82,12 +82,6 @@ class Treemap extends Component {
                 colors="nivo"
                 innerPadding={10}
                 outerPadding={3}
-                margin={{
-                    "top": 10,
-                    "right": 0,
-                    "bottom": 20,
-                    "left": 20
-                }}
                 label={this.getLabel}
                 labelSkipSize={12}
                 colorBy="name"

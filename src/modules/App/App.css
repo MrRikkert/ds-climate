@@ -1,7 +1,7 @@
 .flex-container {
   display: flex;
   justify-content: space-evenly;
-  height: calc(100% - 3rem);
+  height: calc(100% - 58px);
   width: 100%;
 }
 
