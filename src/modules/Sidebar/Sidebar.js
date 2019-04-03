@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import "./Sidebar.css"
-import Select from "react-dropdown-select";
+import CountrySelector from "./CountrySelector/CountrySelector"
+import YearSelector from "./YearSelector/YearSelector"
+import MetricSelector from "./MetricSelector/MetricSelector"
 
 class SideBar extends Component {
     state = {
@@ -12,35 +14,13 @@ class SideBar extends Component {
             <div className="sidenav">
                 <ul className="filters-list">
                     <li>
-                        <Select
-                            placeholder="Type to search"
-                            multi
-                            clearable
-                            onChange={(values) => this.props.updateSelectedCountries(values)}
-                            values={[]}
-                            options={this.props.allCountries}
-                        />
+                        <CountrySelector {...this.props} />
                     </li>
                     <li>
-                        <label>
-                            Relative? (divide by population)
-                        <input
-                                type="checkbox"
-                                name="Relative?"
-                                checked={this.props.filter.relative}
-                                onChange={this.props.setRelative} />
-                        </label>
+                        <MetricSelector {...this.props} />
                     </li>
                     <li>
-                        <button onClick={this.props.ToggleYearTimer}>Toggle timer</button>
-                        <input
-                            type="range"
-                            min="1970"
-                            max="2014"
-                            value={this.props.filter.year}
-                            step="1"
-                            onChange={this.props.changeYear} />
-                        <label>{this.props.filter.year}</label>
+                        <YearSelector {...this.props} />
                     </li>
                 </ul>
             </div>

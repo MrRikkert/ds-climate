@@ -6,6 +6,7 @@
     "nivo": "^0.31.0",
     "papaparse": "^4.6.3",
     "react": "^16.8.4",
+    "react-accessible-accordion": "^3.0.0",
     "react-dom": "^16.8.4",
     "react-dropdown-select": "^2.2.3",
     "react-router-dom": "^4.3.1",
