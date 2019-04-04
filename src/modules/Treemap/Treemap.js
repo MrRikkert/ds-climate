@@ -28,21 +28,10 @@ class Treemap extends Component {
         return node.country + " (" + node.name + ")"
     }
 
-    getDivider(row) {
-        switch (this.state.filter.metric.value) {
-            case 1:
-                return 1;
-            case 2:
-                return row.population
-            default:
-                return 1;
-        }
-    }
-
     async transformData() {
         let data = this.props.getFilteredData()
             .map((d) => {
-                let divider = this.getDivider(d)
+                let divider = this.props.getDivider(d)
                 return {
                     name: d.country,
                     children: [

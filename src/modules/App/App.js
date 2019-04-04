@@ -7,7 +7,8 @@ import './App.css';
 
 const metrics = [
   { label: "normal", value: 1 },
-  { label: "per population", value: 2 }
+  { label: "per population", value: 2 },
+  { label: "per GDP per capita", value: 3 }
 ]
 
 
@@ -35,7 +36,8 @@ class App extends Filter {
             fullData={this.state.fullData}
             filter={this.state.filter}
             getFilteredData={this.getFilteredData}
-            setTitle={this.setTitle} />} />
+            setTitle={this.setTitle}
+            getDivider={this.getDivider} />} />
       </Switch>
     )
   }

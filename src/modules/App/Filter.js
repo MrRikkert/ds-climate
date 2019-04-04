@@ -28,6 +28,19 @@ class Filter extends Component {
         })
     }
 
+    getDivider = (row) => {
+        switch (this.state.filter.metric.value) {
+            case 1:
+                return 1;
+            case 2:
+                return row.population
+            case 3:
+                return row.gdp_pc
+            default:
+                return 1;
+        }
+    }
+
     getFilteredData = () => {
         return this.state.fullData.filter((d) => {
             if (parseInt(d.year) === parseInt(this.state.filter.year) &&
