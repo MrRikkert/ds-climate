@@ -36,6 +36,8 @@ class Filter extends Component {
                 return row.population
             case 3:
                 return row.gdp_pc
+            case 4:
+                return row.area
             default:
                 return 1;
         }

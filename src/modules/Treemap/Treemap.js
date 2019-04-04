@@ -28,6 +28,13 @@ class Treemap extends Component {
         return node.country + " (" + node.name + ")"
     }
 
+    divide = (x, y) => {
+        if (!y) {
+            return 0
+        }
+        return x / y
+    }
+
     async transformData() {
         let data = this.props.getFilteredData()
             .map((d) => {
@@ -37,17 +44,17 @@ class Treemap extends Component {
                     children: [
                         {
                             name: "Gas",
-                            loc: d.co2_gas_e / divider,
+                            loc: this.divide(d.co2_gas_e, divider),
                             country: d.country
                         },
                         {
                             name: "liquid",
-                            loc: d.co2_liquid_e / divider,
+                            loc: this.divide(d.co2_liquid_e, divider),
                             country: d.country
                         },
                         {
                             name: "solid",
-                            loc: d.co2_solid_e / divider,
+                            loc: this.divide(d.co2_solid_e, divider),
                             country: d.country
                         },
                     ]
