@@ -1,5 +1,5 @@
 .route-list {
-    list-style-type:none;
+    list-style-type: none;
     padding: 0;
     margin: 0;
 }
@@ -13,8 +13,12 @@
     text-decoration: none;
 }
 
-.route-list li:hover {
+.route-active li {
     background-color: #DDDDDD;
+}
+
+.route-list li:hover {
+    background-color: #CCCCCC;
 }
 
 #accordion__panel-route-list {

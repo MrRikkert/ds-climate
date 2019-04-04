@@ -23,13 +23,13 @@ class RoutePanel extends Component {
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                     <ul className="route-list">
-                        <NavLink to="/treemap">
+                        <NavLink activeClassName="route-active" to="/treemap">
                             <li>CO2 emissions By fuel burned</li>
                         </NavLink>
-                        <NavLink to="/treemap">
+                        <NavLink activeClassName="route-active" to="#">
                             <li>link2</li>
                         </NavLink>
-                        <NavLink to="/treemap">
+                        <NavLink activeClassName="route-active" to="#">
                             <li>link3</li>
                         </NavLink>
                     </ul>
