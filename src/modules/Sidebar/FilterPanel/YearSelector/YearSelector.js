@@ -6,7 +6,7 @@ class YearSelector extends Component {
     render() {
         return (
             <React.Fragment>
-                <button className="toggle-timer" onClick={this.props.ToggleYearTimer}>{this.props.animating ? "Stop" : "Play"}</button>
+                <button className="toggle-timer" onClick={this.props.ToggleYearTimer}>{this.props.animating ? "Stop" : "Start"}</button>
                 <input
                     className="year-slider"
                     type="range"
