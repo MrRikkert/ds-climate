@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SideBar from '../Sidebar/Sidebar';
 import Treemap from '../Treemap/Treemap';
+import EmissionsAreaGraph from "../EmissionsAreaGraph/EmissionsAreaGraph"
 import Filter from "./Filter"
 import './App.css';
 
@@ -34,6 +35,16 @@ class App extends Filter {
           exact
           path="/treemap">
           <Treemap
+            fullData={this.state.fullData}
+            filter={this.state.filter}
+            getFilteredData={this.getFilteredData}
+            setTitle={this.setTitle}
+            getDivider={this.getDivider} />
+        </Route>
+        <Route
+          exact
+          path="/emission-per-country-area">
+          <EmissionsAreaGraph
             fullData={this.state.fullData}
             filter={this.state.filter}
             getFilteredData={this.getFilteredData}

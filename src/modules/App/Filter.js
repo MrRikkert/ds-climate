@@ -53,7 +53,7 @@ class Filter extends Component {
                     return true
                 }
             } else {
-                if (this.state.filter.countries.indexOf(d.country) > -1) {
+                if (this.state.filter.countries.indexOf(d.country) > -1 && parseInt(d.year) >= 1970 && parseInt(d.year) <= 2012) {
                     return true
                 }
             }
