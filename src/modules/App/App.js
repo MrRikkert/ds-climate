@@ -61,7 +61,8 @@ class App extends Filter {
               changeYear={this.changeYear}
               ToggleYearTimer={this.ToggleYearTimer}
               metrics={metrics}
-              updateSelectedMetric={this.updateSelectedMetric} />
+              updateSelectedMetric={this.updateSelectedMetric}
+              animating={this.state.animating} />
           </div>
         </div>
       </Router>

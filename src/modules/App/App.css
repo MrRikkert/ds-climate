@@ -14,7 +14,7 @@
 .content {
   display: flex;
   margin: 0px;
-  width:  calc(100% - 400px);
+  width: calc(100% - 400px);
   resize: horizontal;
 }
 
@@ -22,5 +22,5 @@
   font-size: 2rem;
   padding: 10px;
   text-align: center;
-  background-color: #61CDBB;
+  background-color: #3498db;
 }
