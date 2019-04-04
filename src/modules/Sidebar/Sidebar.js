@@ -8,6 +8,7 @@ import {
     AccordionItemButton,
     AccordionItemPanel,
 } from 'react-accessible-accordion';
+import RoutePanel from "./RoutePanel/RoutePanel"
 
 import 'react-accessible-accordion/dist/fancy-example.css';
 
@@ -19,17 +20,9 @@ class SideBar extends Component {
     render() {
         return (
             <div className="sidenav">
-                <Accordion allowZeroExpanded preExpanded={["1"]} >
-                    <AccordionItem uuid={"1"}>
-                        <AccordionItemHeading>
-                            <AccordionItemButton>
-                                Filters
-                    </AccordionItemButton>
-                        </AccordionItemHeading>
-                        <AccordionItemPanel>
-                            <FilterPanel {...this.props} />
-                        </AccordionItemPanel>
-                    </AccordionItem>
+                <Accordion allowZeroExpanded allowMultipleExpanded preExpanded={["filters-list"]} >
+                    <FilterPanel {...this.props} />
+                    <RoutePanel {...this.props} />
                 </Accordion>
             </div>
         );

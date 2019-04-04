@@ -3,6 +3,12 @@ import "./FilterPanel.css"
 import CountrySelector from "./CountrySelector/CountrySelector"
 import YearSelector from "./YearSelector/YearSelector"
 import MetricSelector from "./MetricSelector/MetricSelector"
+import {
+    AccordionItem,
+    AccordionItemHeading,
+    AccordionItemButton,
+    AccordionItemPanel,
+} from 'react-accessible-accordion';
 
 class FilterPanel extends Component {
     state = {
@@ -11,17 +17,27 @@ class FilterPanel extends Component {
 
     render() {
         return (
-            <ul className="filters-list">
-                <li>
-                    <CountrySelector {...this.props} />
-                </li>
-                <li>
-                    <MetricSelector {...this.props} />
-                </li>
-                <li>
-                    <YearSelector {...this.props} />
-                </li>
-            </ul>
+            <AccordionItem uuid={"filters-list"}>
+                <AccordionItemHeading>
+                    <AccordionItemButton>
+                        Filters
+                            </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+                    <ul className="filters-list">
+                        <li>
+                            <CountrySelector {...this.props} />
+                        </li>
+                        <li>
+                            <MetricSelector {...this.props} />
+                        </li>
+                        <li>
+                            <YearSelector {...this.props} />
+                        </li>
+                    </ul>
+                </AccordionItemPanel>
+            </AccordionItem>
+
         );
     }
 }

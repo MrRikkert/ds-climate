@@ -32,13 +32,14 @@ class App extends Filter {
       <Switch>
         <Route
           exact
-          path="/treemap"
-          render={(props) => <Treemap
+          path="/treemap">
+          <Treemap
             fullData={this.state.fullData}
             filter={this.state.filter}
             getFilteredData={this.getFilteredData}
             setTitle={this.setTitle}
-            getDivider={this.getDivider} />} />
+            getDivider={this.getDivider} />
+        </Route>
       </Switch>
     )
   }
