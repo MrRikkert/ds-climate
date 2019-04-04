@@ -15,9 +15,11 @@ class Filter extends Component {
                     filter: filter
                 })
             } else {
-                this.setState({
-                    animating: false
-                })
+                if (this.state.animating) {
+                    this.setState({
+                        animating: false
+                    })
+                }
             }
         }, 500)
     }
@@ -43,11 +45,17 @@ class Filter extends Component {
         }
     }
 
-    getFilteredData = () => {
+    getFilteredData = (filterYear = true) => {
         return this.state.fullData.filter((d) => {
-            if (parseInt(d.year) === parseInt(this.state.filter.year) &&
-                this.state.filter.countries.indexOf(d.country) > -1) {
-                return true
+            if (filterYear) {
+                if (parseInt(d.year) === parseInt(this.state.filter.year) &&
+                    this.state.filter.countries.indexOf(d.country) > -1) {
+                    return true
+                }
+            } else {
+                if (this.state.filter.countries.indexOf(d.country) > -1) {
+                    return true
+                }
             }
             return false
         })
