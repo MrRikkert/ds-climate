@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ResponsiveTreeMap } from 'nivo/es/components/charts/treemap'
+import { ResponsiveTreeMap } from '@nivo/treemap'
 
 class Treemap extends Component {
     state = {
@@ -75,7 +75,7 @@ class Treemap extends Component {
                 root={this.state.data}
                 value="loc"
                 identity="name"
-                colors="nivo"
+                colors="set3"
                 innerPadding={10}
                 outerPadding={3}
                 label={this.getLabel}

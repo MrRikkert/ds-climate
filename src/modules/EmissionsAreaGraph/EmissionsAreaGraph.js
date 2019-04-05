@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ResponsiveLine } from '@nivo/line'
 import "./EmissionAreaGraph.css"
+import Helper from "../../helpers/helper"
 
 let yMax = 35000000
 let yMin = 1
@@ -99,13 +100,18 @@ class EmissionsAreaGraph extends Component {
         })
     }
 
+    getColor = (d) => {
+        return Helper.getColorFromString(d.id)
+    }
+
     render() {
         return (
             <div className="emission-line-graph">
                 <ResponsiveLine
                     curve="monotoneX"
                     data={this.state.data}
-                    colors="nivo"
+                    colors="set1"
+                    colorBy={this.getColor}
                     animate={true}
                     motionStiffness={200}
                     motionDamping={20}
