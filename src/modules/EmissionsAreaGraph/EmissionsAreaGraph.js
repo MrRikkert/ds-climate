@@ -39,7 +39,7 @@ class EmissionsAreaGraph extends Component {
 
     divide = (x, y) => {
         if (!y) {
-            return 1
+            return 0
         }
         return x / y
     }
@@ -65,14 +65,14 @@ class EmissionsAreaGraph extends Component {
                 data: grouped[country]
                     .map((d) => {
                         let divider = this.props.getDivider(d)
-                        let y = this.divide(d.co2_e, divider)
+                        console.log(this.divide(d.total_e, divider))
                         return {
                             x: parseInt(d.year),
                             y: this.divide(d.total_e, divider),
                         }
                     })
                     .filter((d) => {
-                        return d.y > 1;
+                        return d.y > 0;
                     })
             })
         }
