@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { ResponsiveLine } from 'nivo/es/components/charts/line'
+import { ResponsiveLine } from '@nivo/line'
 
 class EmissionsAreaGraph extends Component {
     state = {
         data: [{
-            "id": "japan",
-            "color": "hsl(119, 70%, 50%)",
+            "id": "",
+            "color": "",
             "data": [
                 {
-                    "x": "plane",
-                    "y": 16
+                    "x": 0,
+                    "y": 0
                 },
             ]
         }],
@@ -39,7 +39,7 @@ class EmissionsAreaGraph extends Component {
 
     divide = (x, y) => {
         if (!y) {
-            return 0
+            return 1
         }
         return x / y
     }
@@ -62,13 +62,18 @@ class EmissionsAreaGraph extends Component {
         for (let country in grouped) {
             data.push({
                 id: country,
-                data: grouped[country].map((d) => {
-                    let divider = this.props.getDivider(d)
-                    return {
-                        x: parseInt(d.year),
-                        y: this.divide(d.total_e, divider),
-                    }
-                })
+                data: grouped[country]
+                    .map((d) => {
+                        let divider = this.props.getDivider(d)
+                        let y = this.divide(d.co2_e, divider)
+                        return {
+                            x: parseInt(d.year),
+                            y: this.divide(d.total_e, divider),
+                        }
+                    })
+                    .filter((d) => {
+                        return d.y > 1;
+                    })
             })
         }
         this.setState({
@@ -79,51 +84,48 @@ class EmissionsAreaGraph extends Component {
     render() {
         return (
             <React.Fragment>
-                {this.state.data[0] ? (
-                    <ResponsiveLine
-                        curve="monotoneX"
-                        data={this.state.data}
-                        colors="nivo"
-                        animate={true}
-                        motionStiffness={200}
-                        motionDamping={20}
-                        margin={{
-                            "top": 10,
-                            "right": 10,
-                            "bottom": 60,
-                            "left": 60
-                        }}
-                        xScale={{
-                            "type": "linear"
-                        }}
-                        yScale={{
-                            "type": "linear",
-                            "stacked": true,
-                            "min": "auto",
-                            "max": "auto"
-                        }}
-                        axisBottom={{
-                            "orient": "bottom",
-                            "tickSize": 5,
-                            "tickPadding": 5,
-                            "tickRotation": 90,
-                            tickValues: [1970, 2012],
-                            "legend": "transportation",
-                            "legendOffset": 50,
-                            "legendPosition": "center"
-                        }}
-                        axisLeft={{
-                            "orient": "left",
-                            "tickSize": 5,
-                            "tickPadding": 5,
-                            "tickRotation": 0,
-                            "legend": "count",
-                            "legendOffset": -40,
-                            "legendPosition": "center"
-                        }} />
-                ) : (
-                        <div>Please select a country</div>
-                    )}
+                <ResponsiveLine
+                    curve="monotoneX"
+                    data={this.state.data}
+                    colors="nivo"
+                    animate={true}
+                    motionStiffness={200}
+                    motionDamping={20}
+                    enableGridY={false}
+                    margin={{
+                        "top": 10,
+                        "right": 10,
+                        "bottom": 60,
+                        "left": 70
+                    }}
+                    xScale={{
+                        "type": "linear",
+                        "min": 1970,
+                        "max": 2012,
+                    }}
+                    yScale={{
+                        "type": "log",
+                        "base": 10,
+                        "min": 1,
+                        "max": 35000000
+                    }}
+                    axisBottom={{
+                        "orient": "bottom",
+                        "tickSize": 5,
+                        "tickPadding": 5,
+                        "tickRotation": 90,
+                        "tickValues": 10,
+                        "legend": "Year",
+                        "legendOffset": 50,
+                        "legendPosition": "middle"
+                    }}
+                    axisLeft={{
+                        "orient": "left",
+                        "tickSize": 5,
+                        "tickPadding": 5,
+                        "tickRotation": 0,
+                        "tickValues": 6,
+                    }} />
             </React.Fragment>
         );
     }
