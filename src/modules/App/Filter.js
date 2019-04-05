@@ -77,6 +77,14 @@ class Filter extends Component {
         })
     }
 
+    toggleLog = () => {
+        let filter = this.state.filter
+        filter.log = !filter.log
+        this.setState({
+            filter: filter
+        })
+    }
+
     ToggleYearTimer = () => {
         this.setState({
             animating: !this.state.animating

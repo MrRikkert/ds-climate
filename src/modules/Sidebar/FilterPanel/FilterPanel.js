@@ -3,6 +3,7 @@ import "./FilterPanel.css"
 import CountrySelector from "./CountrySelector/CountrySelector"
 import YearSelector from "./YearSelector/YearSelector"
 import MetricSelector from "./MetricSelector/MetricSelector"
+import YaxisToggle from "./YaxisToggle/YaxisToggle"
 import {
     AccordionItem,
     AccordionItemHeading,
@@ -33,6 +34,9 @@ class FilterPanel extends Component {
                         </li>
                         <li>
                             <YearSelector {...this.props} />
+                        </li>
+                        <li>
+                            <YaxisToggle {...this.props} />
                         </li>
                     </ul>
                 </AccordionItemPanel>

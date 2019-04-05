@@ -10,7 +10,7 @@ const metrics = [
   { label: "normal", value: 1, yMinLog: 1, yMaxLog: 35000000, },
   { label: "per population", value: 2, yMinLog: 0.000001, yMaxLog: 1 },
   { label: "per GDP per capita", value: 3, yMinLog: 1, yMaxLog: 35000 },
-  { label: "per area (sq.km)", value: 4, yMinLog: 0.000001, yMaxLog: 1 }
+  { label: "per area (sq.km)", value: 4, yMinLog: 0.1, yMaxLog: 10 }
 ]
 
 
@@ -21,11 +21,20 @@ class App extends Filter {
       countries: ["Netherlands"],
       metric: metrics[0],
       year: 1970,
+      log: false,
     },
     metrics: metrics,
     allCountries: [],
     animating: false,
     title: "Please select a graph"
+  }
+
+  commomMethods = {
+    fullData: this.state.fullData,
+    filter: this.state.filter,
+    getFilteredData: this.getFilteredData,
+    setTitle: this.setTitle,
+    getDivider: this.getDivider
   }
 
   renderRoutes = () => {
@@ -34,22 +43,12 @@ class App extends Filter {
         <Route
           exact
           path="/treemap">
-          <Treemap
-            fullData={this.state.fullData}
-            filter={this.state.filter}
-            getFilteredData={this.getFilteredData}
-            setTitle={this.setTitle}
-            getDivider={this.getDivider} />
+          <Treemap {...this.commomMethods} />
         </Route>
         <Route
           exact
           path="/emission-per-country-area">
-          <EmissionsAreaGraph
-            fullData={this.state.fullData}
-            filter={this.state.filter}
-            getFilteredData={this.getFilteredData}
-            setTitle={this.setTitle}
-            getDivider={this.getDivider} />
+          <EmissionsAreaGraph {...this.commomMethods} />
         </Route>
       </Switch>
     )
@@ -73,7 +72,8 @@ class App extends Filter {
               ToggleYearTimer={this.ToggleYearTimer}
               metrics={metrics}
               updateSelectedMetric={this.updateSelectedMetric}
-              animating={this.state.animating} />
+              animating={this.state.animating}
+              toggleLog={this.toggleLog} />
           </div>
         </div>
       </Router>

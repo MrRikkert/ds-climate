@@ -3,6 +3,7 @@ import { ResponsiveLine } from '@nivo/line'
 
 let yMax = 35000000
 let yMin = 1
+let yType = "linear";
 
 class EmissionsAreaGraph extends Component {
     state = {
@@ -39,8 +40,15 @@ class EmissionsAreaGraph extends Component {
     }
 
     setYValues = () => {
-        yMin = this.state.filter.metric.yMinLog
-        yMax = this.state.filter.metric.yMaxLog
+        if (this.state.filter.log) {
+            yType = "log"
+            yMin = this.state.filter.metric.yMinLog
+            yMax = this.state.filter.metric.yMaxLog
+        } else {
+            yType = "linear"
+            yMin = "auto"
+            yMax = "auto"
+        }
     }
 
     getLabel = (node) => {
@@ -113,7 +121,7 @@ class EmissionsAreaGraph extends Component {
                         "max": 2012,
                     }}
                     yScale={{
-                        "type": "log",
+                        "type": yType,
                         "base": 10,
                         "min": yMin,
                         "max": yMax
