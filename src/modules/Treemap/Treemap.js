@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ResponsiveTreeMap } from '@nivo/treemap'
 import Helper from '../../helpers/helper';
+import "./Treemap.css"
 
 class Treemap extends Component {
     state = {
@@ -98,18 +99,20 @@ class Treemap extends Component {
 
     render() {
         return (
-            <ResponsiveTreeMap
-                root={this.state.data}
-                value="loc"
-                identity="name"
-                colors="set3"
-                label={this.getLabel}
-                labelSkipSize={12}
-                colorBy={this.getColor}
-                animate={true}
-                motionStiffness={200}
-                motionDamping={20}
-                leavesOnly={false} />
+            <div className="emission-treemap">
+                <ResponsiveTreeMap
+                    root={this.state.data}
+                    value="loc"
+                    identity="name"
+                    colors="set3"
+                    label={this.getLabel}
+                    labelSkipSize={35}
+                    colorBy={this.getColor}
+                    animate={true}
+                    motionStiffness={200}
+                    motionDamping={20}
+                    leavesOnly={false} />
+            </div>
         );
     }
 }
