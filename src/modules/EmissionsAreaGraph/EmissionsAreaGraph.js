@@ -143,7 +143,25 @@ class EmissionsAreaGraph extends Component {
                         "tickPadding": 5,
                         "tickRotation": 0,
                         "tickValues": 6,
-                    }} />
+                    }}
+                    legends={[
+                        {
+                            "anchor": "bottom-right",
+                            "direction": "column",
+                            "justify": false,
+                            "translateX": -10,
+                            "translateY": -10,
+                            "itemBackground": "rgba(52, 152, 219, 1)",
+                            "itemsSpacing": 0,
+                            "itemDirection": "left-to-right",
+                            "itemWidth": 160,
+                            "itemHeight": 20,
+                            "itemOpacity": 0.75,
+                            "symbolSize": 12,
+                            "symbolShape": "circle",
+                            "symbolBorderColor": "rgba(0, 0, 0, .5)",
+                        }
+                    ]} />
             </div>
         );
     }
