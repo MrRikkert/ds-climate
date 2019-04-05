@@ -1,0 +1,9 @@
+.emission-line-graph {
+    width: 100%;
+    height: 100%
+}
+
+.emission-line-graph text {
+    font-size: 15px !important;
+    font-family: 'Roboto', sans-serif !important;
+  }

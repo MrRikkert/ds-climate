@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ResponsiveLine } from '@nivo/line'
+import "./EmissionAreaGraph.css"
 
 let yMax = 35000000
 let yMin = 1
@@ -100,7 +101,7 @@ class EmissionsAreaGraph extends Component {
 
     render() {
         return (
-            <React.Fragment>
+            <div className="emission-line-graph">
                 <ResponsiveLine
                     curve="monotoneX"
                     data={this.state.data}
@@ -110,10 +111,10 @@ class EmissionsAreaGraph extends Component {
                     motionDamping={20}
                     enableGridY={false}
                     margin={{
-                        "top": 10,
+                        "top": 15,
                         "right": 10,
-                        "bottom": 60,
-                        "left": 70
+                        "bottom": 80,
+                        "left": 90
                     }}
                     xScale={{
                         "type": "linear",
@@ -133,7 +134,7 @@ class EmissionsAreaGraph extends Component {
                         "tickRotation": 90,
                         "tickValues": 10,
                         "legend": "Year",
-                        "legendOffset": 50,
+                        "legendOffset": 70,
                         "legendPosition": "middle"
                     }}
                     axisLeft={{
@@ -143,7 +144,7 @@ class EmissionsAreaGraph extends Component {
                         "tickRotation": 0,
                         "tickValues": 6,
                     }} />
-            </React.Fragment>
+            </div>
         );
     }
 }
