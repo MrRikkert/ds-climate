@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { ResponsiveLine } from '@nivo/line'
 
+let yMax = 35000000
+let yMin = 1
+
 class EmissionsAreaGraph extends Component {
     state = {
         data: [{
@@ -13,7 +16,7 @@ class EmissionsAreaGraph extends Component {
                 },
             ]
         }],
-        filter: {}
+        filter: {},
     }
 
     componentDidMount() {
@@ -30,7 +33,14 @@ class EmissionsAreaGraph extends Component {
                 filter: this.props.filter
             })
             this.transformData()
+
+            this.setYValues()
         }
+    }
+
+    setYValues = () => {
+        yMin = this.state.filter.metric.yMinLog
+        yMax = this.state.filter.metric.yMaxLog
     }
 
     getLabel = (node) => {
@@ -65,7 +75,6 @@ class EmissionsAreaGraph extends Component {
                 data: grouped[country]
                     .map((d) => {
                         let divider = this.props.getDivider(d)
-                        console.log(this.divide(d.total_e, divider))
                         return {
                             x: parseInt(d.year),
                             y: this.divide(d.total_e, divider),
@@ -106,8 +115,8 @@ class EmissionsAreaGraph extends Component {
                     yScale={{
                         "type": "log",
                         "base": 10,
-                        "min": 1,
-                        "max": 35000000
+                        "min": yMin,
+                        "max": yMax
                     }}
                     axisBottom={{
                         "orient": "bottom",

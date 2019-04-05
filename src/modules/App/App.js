@@ -7,10 +7,10 @@ import Filter from "./Filter"
 import './App.css';
 
 const metrics = [
-  { label: "normal", value: 1 },
-  { label: "per population", value: 2 },
-  { label: "per GDP per capita", value: 3 },
-  { label: "per area (sq.km)", value: 4 }
+  { label: "normal", value: 1, yMinLog: 1, yMaxLog: 35000000, },
+  { label: "per population", value: 2, yMinLog: 0.000001, yMaxLog: 1 },
+  { label: "per GDP per capita", value: 3, yMinLog: 1, yMaxLog: 35000 },
+  { label: "per area (sq.km)", value: 4, yMinLog: 0.000001, yMaxLog: 1 }
 ]
 
 
