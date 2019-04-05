@@ -26,8 +26,8 @@ class RoutePanel extends Component {
                         <NavLink activeClassName="route-active" to="/treemap">
                             <li>CO2 emissions By fuel burned</li>
                         </NavLink>
-                        <NavLink activeClassName="route-active" to="emission-per-country-area">
-                            <li>link2</li>
+                        <NavLink activeClassName="route-active" to="emission-per-country">
+                            <li>Total emissions per country</li>
                         </NavLink>
                         <NavLink activeClassName="route-active" to="#">
                             <li>link3</li>

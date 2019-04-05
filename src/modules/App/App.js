@@ -47,7 +47,7 @@ class App extends Filter {
         </Route>
         <Route
           exact
-          path="/emission-per-country-area">
+          path="/emission-per-country">
           <EmissionsAreaGraph {...this.commomMethods} />
         </Route>
       </Switch>
