@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ResponsiveTreeMap } from '@nivo/treemap'
+import Helper from '../../helpers/helper';
 
 class Treemap extends Component {
     state = {
@@ -43,16 +44,19 @@ class Treemap extends Component {
                     name: d.country,
                     children: [
                         {
+                            id: 1,
                             name: "Gas",
                             loc: this.divide(d.co2_gas_e, divider),
                             country: d.country
                         },
                         {
+                            id: 2,
                             name: "liquid",
                             loc: this.divide(d.co2_liquid_e, divider),
                             country: d.country
                         },
                         {
+                            id: 3,
                             name: "solid",
                             loc: this.divide(d.co2_solid_e, divider),
                             country: d.country
@@ -69,6 +73,29 @@ class Treemap extends Component {
         })
     }
 
+    getColor = (d) => {
+        let color
+        if (d.country) {
+            color = Helper.getColorFromString(d.country)
+            switch (d.id) {
+                case 1:
+                    color = Helper.shadeColor(color, 0.1)
+                    break;
+                case 2:
+                    color = Helper.shadeColor(color, 0.3)
+                    break;
+                case 3:
+                    color = Helper.shadeColor(color, 0.5)
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            color = Helper.getColorFromString(d.name)
+        }
+        return color
+    }
+
     render() {
         return (
             <ResponsiveTreeMap
@@ -76,11 +103,9 @@ class Treemap extends Component {
                 value="loc"
                 identity="name"
                 colors="set3"
-                innerPadding={10}
-                outerPadding={3}
                 label={this.getLabel}
                 labelSkipSize={12}
-                colorBy="name"
+                colorBy={this.getColor}
                 animate={true}
                 motionStiffness={200}
                 motionDamping={20}
