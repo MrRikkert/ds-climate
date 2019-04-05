@@ -81,6 +81,7 @@ class EmissionsAreaGraph extends Component {
             <React.Fragment>
                 {this.state.data[0] ? (
                     <ResponsiveLine
+                        curve="monotoneX"
                         data={this.state.data}
                         colors="nivo"
                         animate={true}
@@ -106,7 +107,7 @@ class EmissionsAreaGraph extends Component {
                             "tickSize": 5,
                             "tickPadding": 5,
                             "tickRotation": 90,
-                            tickValues: [1960, 2012],
+                            tickValues: [1970, 2012],
                             "legend": "transportation",
                             "legendOffset": 50,
                             "legendPosition": "center"
