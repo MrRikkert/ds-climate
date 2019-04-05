@@ -24,7 +24,7 @@ class Filter extends Component {
         }, 500)
     }
 
-    setTitle = (title) => {
+    setTitle = async (title) => {
         this.setState({
             title: title
         })
@@ -61,7 +61,7 @@ class Filter extends Component {
         })
     }
 
-    changeYear = (event) => {
+    changeYear = async (event) => {
         let filter = this.state.filter
         filter.year = event.target.value
         this.setState({
@@ -69,7 +69,7 @@ class Filter extends Component {
         })
     }
 
-    setRelative = (event) => {
+    setRelative = async (event) => {
         let filter = this.state.filter
         filter.relative = !filter.relative
         this.setState({
@@ -77,7 +77,7 @@ class Filter extends Component {
         })
     }
 
-    toggleLog = () => {
+    toggleLog = async () => {
         let filter = this.state.filter
         filter.log = !filter.log
         this.setState({
@@ -85,13 +85,13 @@ class Filter extends Component {
         })
     }
 
-    ToggleYearTimer = () => {
+    ToggleYearTimer = async () => {
         this.setState({
             animating: !this.state.animating
         })
     }
 
-    updateSelectedCountries = (selected) => {
+    updateSelectedCountries = async (selected) => {
         let filter = this.state.filter
         filter.countries = selected.map((d) => {
             return d.label
@@ -101,7 +101,7 @@ class Filter extends Component {
         })
     }
 
-    updateSelectedMetric = (selected) => {
+    updateSelectedMetric = async (selected) => {
         let filter = this.state.filter
         filter.metric = selected[0]
         this.setState({
@@ -109,7 +109,7 @@ class Filter extends Component {
         })
     }
 
-    getData = () => {
+    getData = async () => {
         let parent = this
         let path = require("../../assets/data.csv")
         Papa.parse(path, {

@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-operators */
 class Helper {
     static getColorFromString = (str) => {
         let hash = 0;

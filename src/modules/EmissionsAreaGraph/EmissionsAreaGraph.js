@@ -22,7 +22,7 @@ class EmissionsAreaGraph extends Component {
         filter: {},
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         this.setState({
             filter: this.props.filter
         })
@@ -30,7 +30,7 @@ class EmissionsAreaGraph extends Component {
         this.props.setTitle("CO2 emissions By fuel burned (kt)")
     }
 
-    componentDidUpdate(prevProps) {
+    async componentDidUpdate(prevProps) {
         if (this.props !== prevProps) {
             this.setState({
                 filter: this.props.filter
@@ -41,7 +41,7 @@ class EmissionsAreaGraph extends Component {
         }
     }
 
-    setYValues = () => {
+    setYValues = async () => {
         if (this.state.filter.log) {
             yType = "log"
             yMin = this.state.filter.metric.yMinLog
@@ -75,7 +75,7 @@ class EmissionsAreaGraph extends Component {
         {},
     );
 
-    async transformData() {
+    transformData = async () => {
         let grouped = this.getGroupedData(this.props.getFilteredData(false), "country")
 
         let data = [];

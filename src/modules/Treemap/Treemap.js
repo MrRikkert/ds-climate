@@ -9,7 +9,7 @@ class Treemap extends Component {
         filter: {}
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         this.setState({
             filter: this.props.filter
         })
@@ -17,7 +17,7 @@ class Treemap extends Component {
         this.props.setTitle("CO2 emissions By fuel burned (kt)")
     }
 
-    componentDidUpdate(prevProps) {
+    async componentDidUpdate(prevProps) {
         if (this.props !== prevProps) {
             this.setState({
                 filter: this.props.filter
@@ -37,7 +37,7 @@ class Treemap extends Component {
         return x / y
     }
 
-    async transformData() {
+    transformData = async () => {
         let data = this.props.getFilteredData()
             .map((d) => {
                 let divider = this.props.getDivider(d)
