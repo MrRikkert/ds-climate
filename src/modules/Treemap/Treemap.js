@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ResponsiveTreeMap } from '@nivo/treemap'
-import Helper from '../../helpers/helper';
+import ColorHelper from '../../helpers/ColorHelper';
 import "./Treemap.css"
 
 class Treemap extends Component {
@@ -77,22 +77,22 @@ class Treemap extends Component {
     getColor = (d) => {
         let color
         if (d.country) {
-            color = Helper.getColorFromString(d.country)
+            color = ColorHelper.getColorFromString(d.country)
             switch (d.id) {
                 case 1:
-                    color = Helper.shadeColor(color, 0.1)
+                    color = ColorHelper.shadeColor(color, 0.1)
                     break;
                 case 2:
-                    color = Helper.shadeColor(color, 0.3)
+                    color = ColorHelper.shadeColor(color, 0.3)
                     break;
                 case 3:
-                    color = Helper.shadeColor(color, 0.5)
+                    color = ColorHelper.shadeColor(color, 0.5)
                     break;
                 default:
                     break;
             }
         } else {
-            color = Helper.getColorFromString(d.name)
+            color = ColorHelper.getColorFromString(d.name)
         }
         return color
     }

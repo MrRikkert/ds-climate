@@ -10,7 +10,7 @@ const metrics = [
   { label: "normal", value: 1, yMinLog: 1, yMaxLog: 35000000, },
   { label: "per population", value: 2, yMinLog: 0.000001, yMaxLog: 1 },
   { label: "per GDP per capita", value: 3, yMinLog: 0.1, yMaxLog: 35000 },
-  { label: "per area (sq.km)", value: 4, yMinLog: 0.1, yMaxLog: 10 }
+  { label: "per area (sq.km)", value: 4, yMinLog: 0.01, yMaxLog: 10 }
 ]
 
 

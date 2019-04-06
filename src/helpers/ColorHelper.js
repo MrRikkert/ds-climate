@@ -1,5 +1,5 @@
 /* eslint-disable no-mixed-operators */
-class Helper {
+class ColorHelper {
     static getColorFromString = (str) => {
         let hash = 0;
         for (let i = 0; i < str.length; i++) {
@@ -19,4 +19,4 @@ class Helper {
     }
 }
 
-export default Helper;
+export default ColorHelper;
