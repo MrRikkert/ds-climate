@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
-import "./LegendPanel.css"
-import {
-    AccordionItem,
-    AccordionItemHeading,
-    AccordionItemButton,
-    AccordionItemPanel,
-} from 'react-accessible-accordion';
-import { NavLink } from "react-router-dom";
+import { AccordionItem, AccordionItemButton, AccordionItemHeading, AccordionItemPanel } from 'react-accessible-accordion';
+import "./LegendPanel.css";
 
 class LegendPanel extends Component {
 
