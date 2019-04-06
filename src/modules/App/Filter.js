@@ -96,12 +96,14 @@ class Filter extends Component {
 
     updateSelectedCountries = async (selected) => {
         let filter = this.state.filter
-        filter.countries = selected.map((d) => {
-            return {
-                country: d.label,
-                color: ColorHelper.getColorFromString(d.label)
-            }
-        })
+        filter.countries = selected
+            .map((d) => {
+                return {
+                    country: d.label,
+                    color: ColorHelper.getColorFromString(d.label)
+                }
+            })
+            .sort((a, b) => (a.country > b.country) ? 1 : ((b.country > a.country) ? -1 : 0))
         this.setState({
             filter: filter
         })
