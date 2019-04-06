@@ -1,6 +1,7 @@
 import * as Papa from 'papaparse';
 import { Component } from 'react';
 import './App.css';
+import ColorHelper from '../../helpers/ColorHelper';
 
 class Filter extends Component {
 
@@ -47,13 +48,15 @@ class Filter extends Component {
 
     getFilteredData = (filterYear = true) => {
         return this.state.fullData.filter((d) => {
+            let countrySelected = this.state.filter.countries.map((d) => { return d.country }).indexOf(d.country) > -1
+
             if (filterYear) {
                 if (parseInt(d.year) === parseInt(this.state.filter.year) &&
-                    this.state.filter.countries.indexOf(d.country) > -1) {
+                    countrySelected) {
                     return true
                 }
             } else {
-                if (this.state.filter.countries.indexOf(d.country) > -1 && parseInt(d.year) >= 1970 && parseInt(d.year) <= 2012) {
+                if (countrySelected && parseInt(d.year) >= 1970 && parseInt(d.year) <= 2012) {
                     return true
                 }
             }
@@ -94,7 +97,10 @@ class Filter extends Component {
     updateSelectedCountries = async (selected) => {
         let filter = this.state.filter
         filter.countries = selected.map((d) => {
-            return d.label
+            return {
+                country: d.label,
+                color: ColorHelper.getColorFromString(d.label)
+            }
         })
         this.setState({
             filter: filter

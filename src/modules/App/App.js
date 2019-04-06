@@ -18,7 +18,7 @@ class App extends Filter {
   state = {
     fullData: [],
     filter: {
-      countries: ["Netherlands"],
+      countries: [],
       metric: metrics[0],
       year: 1970,
       log: false,
