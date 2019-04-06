@@ -112,8 +112,9 @@ class Filter extends Component {
   }
 
   updateSelectedMetric = async (selected) => {
+    console.log(selected)
     let filter = this.state.filter
-    filter.metric = selected[0]
+    filter.metric = selected
     this.setState({
       filter: filter
     })
