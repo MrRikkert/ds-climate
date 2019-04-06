@@ -5,6 +5,7 @@ import {
     Accordion,
 } from 'react-accessible-accordion';
 import RoutePanel from "./RoutePanel/RoutePanel"
+import LegendPanel from "./LegendPanel/LegendPanel"
 
 import 'react-accessible-accordion/dist/fancy-example.css';
 
@@ -16,8 +17,9 @@ class SideBar extends Component {
     render() {
         return (
             <div className="sidenav">
-                <Accordion allowZeroExpanded allowMultipleExpanded preExpanded={["filters-list"]} >
+                <Accordion allowZeroExpanded allowMultipleExpanded preExpanded={["filters-list", "legend"]} >
                     <FilterPanel {...this.props} />
+                    <LegendPanel {...this.props} />
                     <RoutePanel {...this.props} />
                 </Accordion>
             </div>
