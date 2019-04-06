@@ -12,7 +12,7 @@ class CountrySelector extends Component {
                     multi
                     clearable
                     onChange={(values) => this.props.updateSelectedCountries(values)}
-                    values={[]}
+                    values={this.props.filter.countries}
                     options={this.props.allCountries}
                 />
             </React.Fragment>

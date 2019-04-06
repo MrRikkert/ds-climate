@@ -13,12 +13,18 @@ const metrics = [
   { label: "per area (sq.km)", value: 4, yMinLog: 0.01, yMaxLog: 10 }
 ]
 
+const selectedCountries = [
+  { label: "Netherlands", value: "Netherlands" },
+  { label: "Belgium", value: "Belgium" },
+  { label: "Luxembourg", value: "Luxembourg" }
+]
+
 
 class App extends Filter {
   state = {
     fullData: [],
     filter: {
-      countries: [],
+      countries: selectedCountries,
       metric: metrics[0],
       year: 1970,
       log: false,
