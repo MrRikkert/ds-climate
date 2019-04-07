@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { ResponsiveLine } from '@nivo/line'
 import "./EmissionAreaGraph.css"
 import ColorHelper from "../../helpers/ColorHelper"
+import CountrySelector from "../Sidebar/FilterPanel/CountrySelector/CountrySelector"
+import AnimationToggle from "../Sidebar/FilterPanel/AnimationToggle/AnimationToggle"
+import MetricSelector from "../Sidebar/FilterPanel/MetricSelector/MetricSelector"
+import YaxisToggle from "../Sidebar/FilterPanel/YaxisToggle/YaxisToggle"
 
 let yMax = 35000000
 let yMin = 1
@@ -28,6 +32,15 @@ class EmissionsAreaGraph extends Component {
     })
     this.transformData()
     this.props.setTitle("CO2 emissions per country (kt)")
+
+    console.log(this.state.filter.filters)
+
+    this.props.setAvailibleFilters([
+      AnimationToggle,
+      CountrySelector,
+      MetricSelector,
+      YaxisToggle
+    ])
   }
 
   async componentDidUpdate(prevProps) {

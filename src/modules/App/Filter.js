@@ -159,6 +159,15 @@ class Filter extends Component {
     })
   }
 
+  setAvailibleFilters = (filters) => {
+    let stateFilters = []
+    for (let i = 0; i < filters.length; i++) {
+      stateFilters.push(filters[i].name)
+    }
+    this.setState({
+      selectedFilters: stateFilters
+    })
+  }
 
 }
 

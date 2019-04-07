@@ -23,6 +23,7 @@ class App extends Filter {
       log: false,
       animate: true,
     },
+    selectedFilters: [],
     metrics: metrics,
     allCountries: [],
     animating: false,
@@ -34,7 +35,8 @@ class App extends Filter {
     filter: this.state.filter,
     getFilteredData: this.getFilteredData,
     setTitle: this.setTitle,
-    getDivider: this.getDivider
+    getDivider: this.getDivider,
+    setAvailibleFilters: this.setAvailibleFilters
   }
 
   renderRoutes = () => {
@@ -74,7 +76,8 @@ class App extends Filter {
               updateSelectedMetric={this.updateSelectedMetric}
               animating={this.state.animating}
               toggleLog={this.toggleLog}
-              toggleAnimations={this.toggleAnimations} />
+              toggleAnimations={this.toggleAnimations}
+              selectedFilters={this.state.selectedFilters} />
           </div>
         </div>
       </Router>

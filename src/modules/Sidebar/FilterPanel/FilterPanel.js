@@ -13,8 +13,9 @@ class FilterPanel extends Component {
   };
 
   getListItem = (label, filter) => {
+    let show = this.props.selectedFilters.indexOf(filter.type.name) > -1
     return (
-      <li>
+      <li className={show ? "" : "hidden"}>
         <ul>
           <li>{label}:</li>
           {filter}

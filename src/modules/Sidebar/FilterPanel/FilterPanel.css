@@ -17,3 +17,7 @@
 .filters-list li:not(:last-child) {
   margin-bottom: 10px;
 }
+
+.hidden {
+  display: none;
+}
