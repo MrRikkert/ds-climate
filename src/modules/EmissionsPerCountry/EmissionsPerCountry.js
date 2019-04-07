@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ResponsiveLine } from '@nivo/line'
-import "./EmissionAreaGraph.css"
+import "./EmissionsPerCountry.css"
 import ColorHelper from "../../helpers/ColorHelper"
 import CountrySelector from "../Sidebar/FilterPanel/CountrySelector/CountrySelector"
 import AnimationToggle from "../Sidebar/FilterPanel/AnimationToggle/AnimationToggle"
@@ -11,7 +11,7 @@ let yMax = 35000000
 let yMin = 1
 let yType = "linear";
 
-class EmissionsAreaGraph extends Component {
+class EmissionsPerCountry extends Component {
   state = {
     data: [{
       "id": "",
@@ -168,4 +168,4 @@ class EmissionsAreaGraph extends Component {
   }
 }
 
-export default EmissionsAreaGraph;
+export default EmissionsPerCountry;

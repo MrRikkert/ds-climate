@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SideBar from '../Sidebar/Sidebar';
 import Treemap from '../Treemap/Treemap';
-import EmissionsAreaGraph from "../EmissionsAreaGraph/EmissionsAreaGraph"
+import EmissionsPerCountry from "../EmissionsPerCountry/EmissionsPerCountry"
 import Filter from "./Filter"
 import './App.css';
 
@@ -50,7 +50,7 @@ class App extends Filter {
         <Route
           exact
           path="/emission-per-country">
-          <EmissionsAreaGraph {...this.commomMethods} />
+          <EmissionsPerCountry {...this.commomMethods} />
         </Route>
       </Switch>
     )
