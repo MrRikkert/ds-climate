@@ -12,6 +12,17 @@ class FilterPanel extends Component {
     options: [],
   };
 
+  getListItem = (label, filter) => {
+    return (
+      <li>
+        <ul>
+          <li>{label}:</li>
+          {filter}
+        </ul>
+      </li>
+    )
+  }
+
   render() {
     return (
       <AccordionItem uuid={"filters-list"}>
@@ -22,36 +33,11 @@ class FilterPanel extends Component {
         </AccordionItemHeading>
         <AccordionItemPanel>
           <ul className="filters-list">
-            <li>
-              <ul>
-                <li>Select countries:</li>
-                <CountrySelector {...this.props} />
-              </ul>
-            </li>
-            <li>
-              <ul>
-                <li>Select metric:</li>
-                <MetricSelector {...this.props} />
-              </ul>
-            </li>
-            <li>
-              <ul>
-                <li>Select year:</li>
-                <YearSelector {...this.props} />
-              </ul>
-            </li>
-            <li>
-              <ul>
-                <li>Toggle logarithmic y-scale:</li>
-                <YaxisToggle {...this.props} />
-              </ul>
-            </li>
-            <li>
-              <ul>
-                <li>Toggle animations:</li>
-                <AnimationToggle {...this.props} />
-              </ul>
-            </li>
+            {this.getListItem("Select countries", <CountrySelector {...this.props} />)}
+            {this.getListItem("Select metric", <MetricSelector {...this.props} />)}
+            {this.getListItem("Select year", <YearSelector {...this.props} />)}
+            {this.getListItem("Toggle logarithmic y-scale", <YaxisToggle {...this.props} />)}
+            {this.getListItem("Toggle animations", <AnimationToggle {...this.props} />)}
           </ul>
         </AccordionItemPanel>
       </AccordionItem>
