@@ -4,6 +4,12 @@
   margin: 0;
 }
 
+.filters-list ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
 .filters-list li li {
   font-weight: bold;
 }
