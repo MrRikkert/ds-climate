@@ -14,11 +14,11 @@ const metrics = [
 ]
 
 const emissionTypes = [
-  { label: "CO2", value: 1 },
-  { label: "Methane", value: 2 },
-  { label: "Nitrous Oxide", value: 3 },
-  { label: "Other", value: 4 },
-  { label: "Total", value: 5 }
+  { label: "CO2", value: "co2_e" },
+  { label: "Methane", value: "methane_e" },
+  { label: "Nitrous Oxide", value: "no_e" },
+  { label: "Other", value: "other_e" },
+  { label: "Total", value: "total_e" }
 ]
 
 class App extends Filter {

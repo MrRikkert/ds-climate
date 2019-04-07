@@ -90,23 +90,6 @@ class EmissionsPerCountry extends Component {
     {},
   );
 
-  getEmissionType = (d) => {
-    switch (this.state.filter.emissionType.value) {
-      case 1:
-        return d.co2_e
-      case 2:
-        return d.methane_e
-      case 3:
-        return d.no_e
-      case 4:
-        return d.other_e
-      case 5:
-        return d.total_e
-      default:
-        return d.co2_e
-    }
-  }
-
   transformData = async () => {
     let grouped = this.getGroupedData(this.props.getFilteredData(false), "country")
 
@@ -117,10 +100,9 @@ class EmissionsPerCountry extends Component {
         data: grouped[country]
           .map((d) => {
             let divider = this.props.getDivider(d)
-            let emissionValue = this.getEmissionType(d)
             return {
               x: parseInt(d.year),
-              y: this.divide(emissionValue, divider),
+              y: this.divide(d[this.state.filter.emissionType.value], divider),
             }
           })
           .filter((d) => {
