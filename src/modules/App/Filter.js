@@ -94,6 +94,14 @@ class Filter extends Component {
     })
   }
 
+  toggleAnimations = async () => {
+    let filter = this.state.filter;
+    filter.animate = !filter.animate
+    this.setState({
+      filter: filter
+    })
+  }
+
   updateSelectedCountries = async (selected) => {
     let filter = this.state.filter
     filter.countries = selected

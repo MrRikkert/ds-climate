@@ -21,6 +21,7 @@ class App extends Filter {
       metric: metrics[0],
       year: 1970,
       log: false,
+      animate: true,
     },
     metrics: metrics,
     allCountries: [],
@@ -72,7 +73,8 @@ class App extends Filter {
               metrics={metrics}
               updateSelectedMetric={this.updateSelectedMetric}
               animating={this.state.animating}
-              toggleLog={this.toggleLog} />
+              toggleLog={this.toggleLog}
+              toggleAnimations={this.toggleAnimations} />
           </div>
         </div>
       </Router>

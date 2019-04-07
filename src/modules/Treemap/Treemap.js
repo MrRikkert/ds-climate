@@ -107,7 +107,7 @@ class Treemap extends Component {
           label={this.getLabel}
           labelSkipSize={35}
           colorBy={this.getColor}
-          animate={true}
+          animate={this.state.filter.animate}
           motionStiffness={200}
           motionDamping={20}
           leavesOnly={false} />

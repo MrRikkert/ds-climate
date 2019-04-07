@@ -112,7 +112,7 @@ class EmissionsAreaGraph extends Component {
           data={this.state.data}
           colors="set1"
           colorBy={this.getColor}
-          animate={true}
+          animate={this.state.filter.animate}
           motionStiffness={200}
           motionDamping={20}
           enableGridY={false}
