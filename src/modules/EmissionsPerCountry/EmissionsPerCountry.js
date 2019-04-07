@@ -6,6 +6,7 @@ import CountrySelector from "../Sidebar/FilterPanel/CountrySelector/CountrySelec
 import AnimationToggle from "../Sidebar/FilterPanel/AnimationToggle/AnimationToggle"
 import MetricSelector from "../Sidebar/FilterPanel/MetricSelector/MetricSelector"
 import YaxisToggle from "../Sidebar/FilterPanel/YaxisToggle/YaxisToggle"
+import EmissionTypeSelector from "../Sidebar/FilterPanel/EmissionTypeSelector/EmissionTypeSelector"
 
 let yMax = 35000000
 let yMin = 1
@@ -31,7 +32,7 @@ class EmissionsPerCountry extends Component {
       filter: this.props.filter
     })
     this.transformData()
-    this.props.setTitle("Total emissions per country (kt)")
+    this.props.setTitle("emissions per country (kt)")
 
     console.log(this.state.filter.filters)
 
@@ -39,7 +40,8 @@ class EmissionsPerCountry extends Component {
       AnimationToggle,
       CountrySelector,
       MetricSelector,
-      YaxisToggle
+      YaxisToggle,
+      EmissionTypeSelector
     ])
   }
 
@@ -88,6 +90,23 @@ class EmissionsPerCountry extends Component {
     {},
   );
 
+  getEmissionType = (d) => {
+    switch (this.state.filter.emissionType.value) {
+      case 1:
+        return d.co2_e
+      case 2:
+        return d.methane_e
+      case 3:
+        return d.no_e
+      case 4:
+        return d.other_e
+      case 5:
+        return d.total_e
+      default:
+        return d.co2_e
+    }
+  }
+
   transformData = async () => {
     let grouped = this.getGroupedData(this.props.getFilteredData(false), "country")
 
@@ -98,9 +117,10 @@ class EmissionsPerCountry extends Component {
         data: grouped[country]
           .map((d) => {
             let divider = this.props.getDivider(d)
+            let emissionValue = this.getEmissionType(d)
             return {
               x: parseInt(d.year),
-              y: this.divide(d.total_e, divider),
+              y: this.divide(emissionValue, divider),
             }
           })
           .filter((d) => {

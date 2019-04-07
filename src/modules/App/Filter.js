@@ -120,9 +120,16 @@ class Filter extends Component {
   }
 
   updateSelectedMetric = async (selected) => {
-    console.log(selected)
     let filter = this.state.filter
     filter.metric = selected
+    this.setState({
+      filter: filter
+    })
+  }
+
+  updateSelectedEmissionType = async (selected) => {
+    let filter = this.state.filter
+    filter.emissionType = selected
     this.setState({
       filter: filter
     })

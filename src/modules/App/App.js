@@ -13,10 +13,19 @@ const metrics = [
   { label: "per area (sq.km)", value: 4, yMinLog: 0.01, yMaxLog: 10 }
 ]
 
+const emissionTypes = [
+  { label: "CO2", value: 1 },
+  { label: "Methane", value: 2 },
+  { label: "Nitrous Oxide", value: 3 },
+  { label: "Other", value: 4 },
+  { label: "Total", value: 5 }
+]
+
 class App extends Filter {
   state = {
     fullData: [],
     filter: {
+      emissionType: emissionTypes[0],
       countries: [],
       metric: metrics[0],
       year: 1970,
@@ -25,6 +34,7 @@ class App extends Filter {
     },
     selectedFilters: [],
     metrics: metrics,
+    emissionTypes: emissionTypes,
     allCountries: [],
     animating: false,
     title: "Please select a graph"
@@ -73,11 +83,13 @@ class App extends Filter {
               ToggleYearTimer={this.ToggleYearTimer}
               metrics={metrics}
               updateSelectedMetric={this.updateSelectedMetric}
+              updateSelectedEmissionType={this.updateSelectedEmissionType}
               animating={this.state.animating}
               toggleLog={this.toggleLog}
               toggleAnimations={this.toggleAnimations}
               selectedFilters={this.state.selectedFilters}
-              title={this.state.title} />
+              title={this.state.title}
+              emissionTypes={this.state.emissionTypes} />
           </div>
         </div>
       </Router>

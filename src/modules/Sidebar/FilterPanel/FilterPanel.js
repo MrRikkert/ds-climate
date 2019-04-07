@@ -6,6 +6,7 @@ import "./FilterPanel.css";
 import MetricSelector from "./MetricSelector/MetricSelector";
 import YaxisToggle from "./YaxisToggle/YaxisToggle";
 import YearSelector from "./YearSelector/YearSelector";
+import EmissionTypeSelector from "./EmissionTypeSelector/EmissionTypeSelector";
 
 class FilterPanel extends Component {
   state = {
@@ -36,6 +37,7 @@ class FilterPanel extends Component {
           <ul className="filters-list">
             {this.getListItem("Select countries", <CountrySelector {...this.props} />)}
             {this.getListItem("Select metric", <MetricSelector {...this.props} />)}
+            {this.getListItem("Select emission type", <EmissionTypeSelector {...this.props} />)}
             {this.getListItem("Select year", <YearSelector {...this.props} />)}
             {this.getListItem("Toggle logarithmic y-scale", <YaxisToggle {...this.props} />)}
             {this.getListItem("Toggle animations", <AnimationToggle {...this.props} />)}
