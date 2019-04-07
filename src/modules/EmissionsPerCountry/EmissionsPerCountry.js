@@ -34,8 +34,6 @@ class EmissionsPerCountry extends Component {
     this.transformData()
     this.props.setTitle("emissions per country (kt)")
 
-    console.log(this.state.filter.filters)
-
     this.props.setAvailibleFilters([
       AnimationToggle,
       CountrySelector,
