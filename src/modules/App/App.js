@@ -60,7 +60,6 @@ class App extends Filter {
     return (
       <Router>
         <div>
-          <div className="title-bar">{this.state.title}</div>
           <div className="flex-container">
             <div className="content" id="content">
               {this.renderRoutes()}
@@ -77,7 +76,8 @@ class App extends Filter {
               animating={this.state.animating}
               toggleLog={this.toggleLog}
               toggleAnimations={this.toggleAnimations}
-              selectedFilters={this.state.selectedFilters} />
+              selectedFilters={this.state.selectedFilters}
+              title={this.state.title} />
           </div>
         </div>
       </Router>

@@ -1,7 +1,7 @@
 .flex-container {
   display: flex;
   justify-content: space-evenly;
-  height: calc(100% - 58px);
+  height: 100%;
   width: 100%;
 }
 
@@ -16,11 +16,4 @@
   margin: 0px;
   width: calc(100% - 400px);
   resize: horizontal;
-}
-
-.title-bar {
-  font-size: 2rem;
-  padding: 10px;
-  text-align: center;
-  background-color: #3498db;
 }
