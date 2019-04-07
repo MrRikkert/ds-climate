@@ -1,9 +1,13 @@
 .filters-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.filters-list li li {
+  font-weight: bold;
 }
 
 .filters-list li:not(:last-child) {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }

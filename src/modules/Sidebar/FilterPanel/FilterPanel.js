@@ -23,18 +23,23 @@ class FilterPanel extends Component {
         <AccordionItemPanel>
           <ul className="filters-list">
             <li>
+              <li>Select countries:</li>
               <CountrySelector {...this.props} />
             </li>
             <li>
+              <li>Select metric:</li>
               <MetricSelector {...this.props} />
             </li>
             <li>
+              <li>Select year:</li>
               <YearSelector {...this.props} />
             </li>
             <li>
+              <li>Toggle logarithmic y-scale:</li>
               <YaxisToggle {...this.props} />
             </li>
             <li>
+              <li>Toggle animations:</li>
               <AnimationToggle {...this.props} />
             </li>
           </ul>
