@@ -31,7 +31,7 @@ class EmissionsAreaGraph extends Component {
       filter: this.props.filter
     })
     this.transformData()
-    this.props.setTitle("CO2 emissions per country (kt)")
+    this.props.setTitle("Total emissions per country (kt)")
 
     console.log(this.state.filter.filters)
 
