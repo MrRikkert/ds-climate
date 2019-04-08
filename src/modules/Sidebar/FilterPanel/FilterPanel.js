@@ -25,6 +25,25 @@ class FilterPanel extends Component {
     )
   }
 
+  displayFilters = () => {
+    return (
+      <React.Fragment>
+        {this.getListItem("Select countries", <CountrySelector {...this.props} />)}
+        {this.getListItem("Select metric", <MetricSelector {...this.props} />)}
+        {this.getListItem("Select emission type", <EmissionTypeSelector {...this.props} />)}
+        {this.getListItem("Select year", <YearSelector {...this.props} />)}
+        {this.getListItem("Toggle logarithmic y-scale", <YaxisToggle {...this.props} />)}
+        {this.getListItem("Toggle animations", <AnimationToggle {...this.props} />)}
+      </React.Fragment>
+    )
+  }
+
+  displayNoFilters = () => {
+    return (
+      <li>There are no filters for this graph</li>
+    )
+  }
+
   render() {
     return (
       <AccordionItem uuid={"filters-list"}>
@@ -35,16 +54,10 @@ class FilterPanel extends Component {
         </AccordionItemHeading>
         <AccordionItemPanel>
           <ul className="filters-list">
-            {this.getListItem("Select countries", <CountrySelector {...this.props} />)}
-            {this.getListItem("Select metric", <MetricSelector {...this.props} />)}
-            {this.getListItem("Select emission type", <EmissionTypeSelector {...this.props} />)}
-            {this.getListItem("Select year", <YearSelector {...this.props} />)}
-            {this.getListItem("Toggle logarithmic y-scale", <YaxisToggle {...this.props} />)}
-            {this.getListItem("Toggle animations", <AnimationToggle {...this.props} />)}
+            {this.props.selectedFilters.length > 0 ? this.displayFilters() : this.displayNoFilters()}
           </ul>
         </AccordionItemPanel>
       </AccordionItem>
-
     );
   }
 }
