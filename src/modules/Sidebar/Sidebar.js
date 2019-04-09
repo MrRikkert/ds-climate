@@ -7,8 +7,6 @@ import {
 import RoutePanel from "./RoutePanel/RoutePanel"
 import LegendPanel from "./LegendPanel/LegendPanel"
 
-import 'react-accessible-accordion/dist/fancy-example.css';
-
 class SideBar extends Component {
   state = {
     options: [],
