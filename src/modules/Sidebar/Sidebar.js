@@ -19,9 +19,9 @@ class SideBar extends Component {
       <div className="sidenav">
         <div className="title">{this.props.title}</div>
         <Accordion allowZeroExpanded allowMultipleExpanded preExpanded={["filters-list", "legend"]} >
+          <RoutePanel {...this.props} />
           <FilterPanel {...this.props} />
           <LegendPanel {...this.props} />
-          <RoutePanel {...this.props} />
         </Accordion>
       </div>
     );
