@@ -3,17 +3,19 @@
   justify-content: space-evenly;
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 .sidenav {
   margin-bottom: 0px;
-  width: 400px;
+  width: 300px;
   resize: horizontal;
+  overflow: auto;
 }
 
 .content {
   display: flex;
   margin: 0px;
-  width: calc(100% - 400px);
+  width: calc(100% - 300px);
   resize: horizontal;
 }
