@@ -6,7 +6,7 @@ class MetricSelector extends Component {
     return (
       <React.Fragment>
         <Select
-          searchable={false}
+          isSearchable={false}
           placeholder="Type to search"
           onChange={(values) => this.props.updateSelectedMetric(values)}
           options={this.props.metrics}
