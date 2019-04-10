@@ -8,7 +8,7 @@ import MetricSelector from "../Sidebar/FilterPanel/MetricSelector/MetricSelector
 import YaxisToggle from "../Sidebar/FilterPanel/YaxisToggle/YaxisToggle"
 import EmissionTypeSelector from "../Sidebar/FilterPanel/EmissionTypeSelector/EmissionTypeSelector"
 
-let yMax = 35000000
+let yMax = 100
 let yMin = 1
 let yType = "linear";
 
@@ -50,19 +50,7 @@ class EmissionsPerCountry extends Component {
       })
       this.transformData()
 
-      this.setYValues()
-    }
-  }
-
-  setYValues = async () => {
-    if (this.state.filter.log) {
-      yType = "log"
-      yMin = this.state.filter.metric.yMinLog
-      yMax = this.state.filter.metric.yMaxLog
-    } else {
-      yType = "linear"
-      yMin = "auto"
-      yMax = "auto"
+      yType = this.state.filter.log ? "log" : "linear"
     }
   }
 
@@ -90,17 +78,30 @@ class EmissionsPerCountry extends Component {
 
   transformData = async () => {
     let grouped = this.getGroupedData(this.props.getFilteredData(false), "country")
+    let min = Math.pow(10, 10);
+    let max = 0;
 
     let data = [];
     for (let country in grouped) {
       data.push({
         id: country,
         data: grouped[country]
+          // eslint-disable-next-line no-loop-func
           .map((d) => {
             let divider = this.props.getDivider(d)
+            let metric = this.state.filter.emissionType ? this.state.filter.emissionType.value : 0
+
+            let x = parseInt(d.year)
+            let y = this.divide(d[metric], divider)
+
+            if (y) {
+              min = y < min ? y : min
+              max = y > max ? y : max
+            }
+
             return {
-              x: parseInt(d.year),
-              y: this.divide(d[this.state.filter.emissionType.value], divider),
+              x: x,
+              y: y,
             }
           })
           .filter((d) => {
@@ -111,6 +112,9 @@ class EmissionsPerCountry extends Component {
     this.setState({
       data: data
     })
+
+    yMax = max > min ? max : 10;
+    yMin = min < max ? min : 1;
   }
 
   getColor = (d) => {
