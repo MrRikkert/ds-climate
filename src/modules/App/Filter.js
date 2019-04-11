@@ -72,9 +72,13 @@ class Filter extends Component {
     })
   }
 
-  toggleLog = () => {
+  toggleLog = (axis) => {
     let filter = this.state.filter
-    filter.log = !filter.log
+    if (axis === "y") {
+      filter.yLog = !filter.yLog
+    } else {
+      filter.xLog = !filter.xLog
+    }
     this.setState({
       filter: filter
     })

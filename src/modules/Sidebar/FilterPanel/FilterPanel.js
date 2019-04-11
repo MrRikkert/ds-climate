@@ -4,7 +4,7 @@ import AnimationToggle from "./AnimationToggle/AnimationToggle";
 import CountrySelector from "./CountrySelector/CountrySelector";
 import "./FilterPanel.css";
 import MetricSelector from "./MetricSelector/MetricSelector";
-import YaxisToggle from "./YaxisToggle/YaxisToggle";
+import LogAxisToggle from "./LogAxisToggle/LogAxisToggle";
 import YearSelector from "./YearSelector/YearSelector";
 import EmissionTypeSelector from "./EmissionTypeSelector/EmissionTypeSelector";
 
@@ -32,7 +32,7 @@ class FilterPanel extends Component {
         {this.getListItem("Select metric", <MetricSelector {...this.props} />)}
         {this.getListItem("Select emission type", <EmissionTypeSelector {...this.props} />)}
         {this.getListItem("Select year", <YearSelector {...this.props} />)}
-        {this.getListItem("Toggle logarithmic y-scale", <YaxisToggle {...this.props} />)}
+        {this.getListItem("Toggle logarithmic y-scale", <LogAxisToggle {...this.props} axis="y" />)}
         {this.getListItem("Toggle animations", <AnimationToggle {...this.props} />)}
       </React.Fragment>
     )

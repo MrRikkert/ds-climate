@@ -5,7 +5,7 @@ import ColorHelper from "../../helpers/ColorHelper"
 import CountrySelector from "../Sidebar/FilterPanel/CountrySelector/CountrySelector"
 import AnimationToggle from "../Sidebar/FilterPanel/AnimationToggle/AnimationToggle"
 import MetricSelector from "../Sidebar/FilterPanel/MetricSelector/MetricSelector"
-import YaxisToggle from "../Sidebar/FilterPanel/YaxisToggle/YaxisToggle"
+import YaxisToggle from "../Sidebar/FilterPanel/LogAxisToggle/LogAxisToggle"
 import EmissionTypeSelector from "../Sidebar/FilterPanel/EmissionTypeSelector/EmissionTypeSelector"
 
 class EmissionsPerCountry extends Component {
