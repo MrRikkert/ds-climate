@@ -1,3 +1,8 @@
 .evg-tooltip td:first-child {
   font-weight: bold;
 }
+
+.evg-tooltip .country-name {
+  font-weight: bold;
+  text-align: center;
+}

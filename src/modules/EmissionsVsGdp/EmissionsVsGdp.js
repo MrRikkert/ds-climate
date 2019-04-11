@@ -131,16 +131,21 @@ class EmissionVsGdp extends Component {
 
   getToolTip = (d) => {
     return (
-      <table className="evg-tooltip">
-        <tr>
-          <td>GDP per Capita: </td>
-          <td>{d.x}</td>
-        </tr>
-        <tr>
-          <td>Emissions: </td>
-          <td>{d.y}</td>
-        </tr>
-      </table>
+      <div className="evg-tooltip">
+        <div className="country-name">{d.serie.id}</div>
+        <table>
+          <tbody>
+            <tr>
+              <td>GDP per Capita: </td>
+              <td>{parseFloat(d.x).toExponential(2)}</td>
+            </tr>
+            <tr>
+              <td>Emissions: </td>
+              <td>{parseFloat(d.y).toExponential(2)}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     )
   }
 
@@ -148,7 +153,7 @@ class EmissionVsGdp extends Component {
     return (
       <div className="emission-line-graph">
         <ResponsiveScatterPlot
-          symbolSize={8}
+          symbolSize={10}
           curve="monotoneX"
           data={this.state.data}
           colors="set1"
