@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@nivo/line": "^0.55.0",
+    "@nivo/scatterplot": "^0.55.0",
     "@nivo/treemap": "^0.55.0",
     "nivo": "^0.31.0",
     "papaparse": "^4.6.3",

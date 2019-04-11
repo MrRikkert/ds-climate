@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SideBar from '../Sidebar/Sidebar';
 import Treemap from '../Treemap/Treemap';
 import EmissionsPerCountry from "../EmissionsPerCountry/EmissionsPerCountry"
+import EmissionVsGdp from "../EmissionsVsGdp/EmissionsVsGdp"
 import Filter from "./Filter"
 import './App.css';
 
@@ -61,6 +62,11 @@ class App extends Filter {
           exact
           path="/emission-per-country">
           <EmissionsPerCountry {...this.commonProps} />
+        </Route>
+        <Route
+          exact
+          path="/emission-vs-gdp-per-capita">
+          <EmissionVsGdp {...this.commonProps} />
         </Route>
       </Switch>
     )

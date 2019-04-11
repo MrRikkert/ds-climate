@@ -29,8 +29,8 @@ class RoutePanel extends Component {
             <NavLink activeClassName="route-active" to="/emission-per-country">
               <li>Total emissions per country</li>
             </NavLink>
-            <NavLink activeClassName="route-active" to="#">
-              <li>link3</li>
+            <NavLink activeClassName="route-active" to="/emission-vs-gdp-per-capita">
+              <li>Emissions vs GDP per capita</li>
             </NavLink>
           </ul>
         </AccordionItemPanel>

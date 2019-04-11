@@ -46,22 +46,30 @@ class Filter extends Component {
     }
   }
 
-  getFilteredData = (filterYear = true) => {
-    return this.state.fullData.filter((d) => {
-      let countrySelected = this.state.filter.countries.map((d) => { return d.country }).indexOf(d.country) > -1
+  getFilteredData = (filterYear = true, filterCountries = true) => {
+    let data = this.state.fullData.filter((d) => {
+      return (parseInt(d.year) >= 1970 && parseInt(d.year) <= 2012)
+    });
 
-      if (filterYear) {
-        if (parseInt(d.year) === parseInt(this.state.filter.year) &&
-          countrySelected) {
+    if (filterYear) {
+      data = data.filter((d) => {
+        if (parseInt(d.year) === parseInt(this.state.filter.year)) {
           return true
         }
-      } else {
-        if (countrySelected && parseInt(d.year) >= 1970 && parseInt(d.year) <= 2012) {
+        return false;
+      })
+    }
+    if (filterCountries) {
+      data = data.filter((d) => {
+        let countrySelected = this.state.filter.countries.map((d) => { return d.country }).indexOf(d.country) > -1
+
+        if (countrySelected) {
           return true
         }
-      }
-      return false
-    })
+        return false;
+      })
+    }
+    return data
   }
 
   changeYear = async (event) => {
