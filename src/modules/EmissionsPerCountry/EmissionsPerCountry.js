@@ -44,7 +44,7 @@ class EmissionsPerCountry extends Component {
 
   async componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
-      let yType = this.state.filter.log ? "log" : "linear"
+      let yType = this.state.filter.yLog ? "log" : "linear"
 
       this.setState({
         filter: this.props.filter,
