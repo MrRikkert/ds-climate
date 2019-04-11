@@ -76,7 +76,6 @@ class App extends Filter {
             <SideBar
               allCountries={this.state.allCountries}
               updateSelectedCountries={this.updateSelectedCountries}
-              setRelative={this.setRelative}
               filter={this.state.filter}
               changeYear={this.changeYear}
               ToggleYearTimer={this.ToggleYearTimer}

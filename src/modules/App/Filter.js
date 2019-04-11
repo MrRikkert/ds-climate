@@ -72,15 +72,7 @@ class Filter extends Component {
     })
   }
 
-  setRelative = async (event) => {
-    let filter = this.state.filter
-    filter.relative = !filter.relative
-    this.setState({
-      filter: filter,
-    })
-  }
-
-  toggleLog = async () => {
+  toggleLog = () => {
     let filter = this.state.filter
     filter.log = !filter.log
     this.setState({

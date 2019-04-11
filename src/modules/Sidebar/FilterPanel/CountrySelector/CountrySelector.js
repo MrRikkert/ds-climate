@@ -9,6 +9,7 @@ class CountrySelector extends Component {
     return (
       <React.Fragment>
         <Select
+          hideSelectedOptions={false}
           className="selectbox"
           placeholder="Type to search"
           isMulti
