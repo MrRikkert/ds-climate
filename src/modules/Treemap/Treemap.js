@@ -21,10 +21,10 @@ class Treemap extends Component {
     this.props.setTitle("CO2 emissions By fuel burned (kt)")
 
     this.props.setAvailibleFilters([
-      AnimationToggle,
-      CountrySelector,
-      MetricSelector,
-      YearSelector
+      AnimationToggle.name,
+      CountrySelector.name,
+      MetricSelector.name,
+      YearSelector.name
     ])
   }
 

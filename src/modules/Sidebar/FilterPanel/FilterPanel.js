@@ -14,7 +14,7 @@ class FilterPanel extends Component {
   };
 
   getListItem = (label, filter) => {
-    let show = this.props.selectedFilters.indexOf(filter.type.name) > -1
+    let show = this.props.selectedFilters.indexOf(filter.props.name) > -1
     return (
       <li className={show ? "" : "hidden"}>
         <ul>
@@ -28,12 +28,13 @@ class FilterPanel extends Component {
   displayFilters = () => {
     return (
       <React.Fragment>
-        {this.getListItem("Select countries", <CountrySelector {...this.props} />)}
-        {this.getListItem("Select metric", <MetricSelector {...this.props} />)}
-        {this.getListItem("Select emission type", <EmissionTypeSelector {...this.props} />)}
+        {this.getListItem("Select countries", <CountrySelector {...this.props} name="CountrySelector" />)}
+        {this.getListItem("Select metric", <MetricSelector {...this.props} name="MetricSelector" />)}
+        {this.getListItem("Select emission type", <EmissionTypeSelector {...this.props} name="EmissionTypeSelector" />)}
         {this.getListItem("Select year", <YearSelector {...this.props} />)}
-        {this.getListItem("Toggle logarithmic y-scale", <LogAxisToggle {...this.props} axis="y" />)}
-        {this.getListItem("Toggle animations", <AnimationToggle {...this.props} />)}
+        {this.getListItem("Toggle logarithmic y-scale", <LogAxisToggle {...this.props} axis="y" name="LogAxisToggleY" />)}
+        {this.getListItem("Toggle logarithmic x-scale", <LogAxisToggle {...this.props} axis="x" name="LogAxisToggleX" />)}
+        {this.getListItem("Toggle animations", <AnimationToggle {...this.props} name="AnimationToggle" />)}
       </React.Fragment>
     )
   }

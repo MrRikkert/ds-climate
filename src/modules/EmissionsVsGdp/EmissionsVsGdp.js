@@ -3,7 +3,6 @@ import { ResponsiveScatterPlot } from '@nivo/scatterplot'
 import "./EmissionsVsGdp.css"
 import AnimationToggle from "../Sidebar/FilterPanel/AnimationToggle/AnimationToggle"
 import MetricSelector from "../Sidebar/FilterPanel/MetricSelector/MetricSelector"
-import LogAxisToggle from "../Sidebar/FilterPanel/LogAxisToggle/LogAxisToggle"
 import EmissionTypeSelector from "../Sidebar/FilterPanel/EmissionTypeSelector/EmissionTypeSelector"
 
 class EmissionVsGdp extends Component {
@@ -22,8 +21,9 @@ class EmissionVsGdp extends Component {
     yMax: 100,
     yMin: 1,
     xMin: 1,
-    xMax: 100,
+    xMax: 1000,
     yType: "linear",
+    xType: "linear"
   }
 
   async componentDidMount() {
@@ -34,20 +34,24 @@ class EmissionVsGdp extends Component {
     this.props.setTitle("emissions per country (kt)")
 
     this.props.setAvailibleFilters([
-      AnimationToggle,
-      MetricSelector,
-      LogAxisToggle,
-      EmissionTypeSelector
+      AnimationToggle.name,
+      MetricSelector.name,
+      "LogAxisToggleX",
+      "LogAxisToggleY",
+      EmissionTypeSelector.name
     ])
   }
 
   async componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
       let yType = this.state.filter.yLog ? "log" : "linear"
+      let xType = this.state.filter.xLog ? "log" : "linear"
 
       this.setState({
         filter: this.props.filter,
-        yType: yType
+        yType: yType,
+        xType: xType,
+        xMin: this.state.filter.xLog ? 50 : 0
       })
       this.transformData()
     }
@@ -114,7 +118,7 @@ class EmissionVsGdp extends Component {
 
     this.setState({
       data: data,
-      yMax: yMax > yMin ? yMax : 10,
+      yMax: yMax > yMin ? 1000000 : 10,
       yMin: yMin < yMax ? yMin : 1,
     })
   }
@@ -137,9 +141,10 @@ class EmissionVsGdp extends Component {
             "left": 90
           }}
           xScale={{
-            "type": "linear",
-            "min": 0,
-            "max": 1000,
+            "base": 10,
+            "type": this.state.xType,
+            "min": this.state.xMin,
+            "max": this.state.xMax,
           }}
           yScale={{
             "type": this.state.yType,
@@ -162,7 +167,7 @@ class EmissionVsGdp extends Component {
             "tickSize": 5,
             "tickPadding": 5,
             "tickRotation": 0,
-            "tickValues": 6,
+            "tickValues": 5,
           }} />
       </div>
     );

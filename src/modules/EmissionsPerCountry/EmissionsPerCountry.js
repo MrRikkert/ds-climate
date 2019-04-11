@@ -5,7 +5,6 @@ import ColorHelper from "../../helpers/ColorHelper"
 import CountrySelector from "../Sidebar/FilterPanel/CountrySelector/CountrySelector"
 import AnimationToggle from "../Sidebar/FilterPanel/AnimationToggle/AnimationToggle"
 import MetricSelector from "../Sidebar/FilterPanel/MetricSelector/MetricSelector"
-import LogAxisToggle from "../Sidebar/FilterPanel/LogAxisToggle/LogAxisToggle"
 import EmissionTypeSelector from "../Sidebar/FilterPanel/EmissionTypeSelector/EmissionTypeSelector"
 
 class EmissionsPerCountry extends Component {
@@ -34,11 +33,11 @@ class EmissionsPerCountry extends Component {
     this.props.setTitle("emissions per country (kt)")
 
     this.props.setAvailibleFilters([
-      AnimationToggle,
-      CountrySelector,
-      MetricSelector,
-      LogAxisToggle,
-      EmissionTypeSelector
+      AnimationToggle.name,
+      CountrySelector.name,
+      MetricSelector.name,
+      "LogAxisToggleY",
+      EmissionTypeSelector.name
     ])
   }
 
