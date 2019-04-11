@@ -40,8 +40,7 @@ class App extends Filter {
     title: "Please select a graph"
   }
 
-  commomMethods = {
-    fullData: this.state.fullData,
+  commonProps = {
     filter: this.state.filter,
     getFilteredData: this.getFilteredData,
     setTitle: this.setTitle,
@@ -55,12 +54,12 @@ class App extends Filter {
         <Route
           exact
           path="/treemap">
-          <Treemap {...this.commomMethods} />
+          <Treemap {...this.commonProps} />
         </Route>
         <Route
           exact
           path="/emission-per-country">
-          <EmissionsPerCountry {...this.commomMethods} />
+          <EmissionsPerCountry {...this.commonProps} />
         </Route>
       </Switch>
     )
