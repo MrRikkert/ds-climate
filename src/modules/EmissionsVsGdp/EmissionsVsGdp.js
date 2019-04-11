@@ -129,6 +129,21 @@ class EmissionVsGdp extends Component {
     return "#3498DB"
   }
 
+  getToolTip = (d) => {
+    return (
+      <table className="evg-tooltip">
+        <tr>
+          <td>GDP per Capita: </td>
+          <td>{d.x}</td>
+        </tr>
+        <tr>
+          <td>Emissions: </td>
+          <td>{d.y}</td>
+        </tr>
+      </table>
+    )
+  }
+
   render() {
     return (
       <div className="emission-line-graph">
@@ -142,6 +157,7 @@ class EmissionVsGdp extends Component {
           motionStiffness={200}
           motionDamping={20}
           enableGridY={false}
+          tooltip={this.getToolTip}
           margin={{
             "top": 15,
             "right": 10,
