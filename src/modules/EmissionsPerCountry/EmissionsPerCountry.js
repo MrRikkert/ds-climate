@@ -45,7 +45,6 @@ class EmissionsPerCountry extends Component {
 
   async componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
-      console.log("update")
       this.setState({
         filter: this.props.filter
       })
