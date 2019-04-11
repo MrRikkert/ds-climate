@@ -8,10 +8,6 @@ import MetricSelector from "../Sidebar/FilterPanel/MetricSelector/MetricSelector
 import YaxisToggle from "../Sidebar/FilterPanel/YaxisToggle/YaxisToggle"
 import EmissionTypeSelector from "../Sidebar/FilterPanel/EmissionTypeSelector/EmissionTypeSelector"
 
-let yMax = 100
-let yMin = 1
-let yType = "linear";
-
 class EmissionsPerCountry extends Component {
   state = {
     data: [{
@@ -25,6 +21,9 @@ class EmissionsPerCountry extends Component {
       ]
     }],
     filter: {},
+    yMax: 100,
+    yMin: 1,
+    yType: "linear",
   }
 
   async componentDidMount() {
@@ -45,17 +44,14 @@ class EmissionsPerCountry extends Component {
 
   async componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
+      let yType = this.state.filter.log ? "log" : "linear"
+
       this.setState({
-        filter: this.props.filter
+        filter: this.props.filter,
+        yType: yType
       })
       this.transformData()
-
-      yType = this.state.filter.log ? "log" : "linear"
     }
-  }
-
-  getLabel = (node) => {
-    return node.country + " (" + node.name + ")"
   }
 
   divide = (x, y) => {
@@ -109,16 +105,12 @@ class EmissionsPerCountry extends Component {
           })
       })
     }
+
     this.setState({
-      data: data
+      data: data,
+      yMax: max > min ? max : 10,
+      yMin: min < max ? min : 1,
     })
-
-    yMax = max > min ? max : 10;
-    yMin = min < max ? min : 1;
-  }
-
-  getColor = (d) => {
-    return ColorHelper.getColorFromString(d.id)
   }
 
   render() {
@@ -128,7 +120,7 @@ class EmissionsPerCountry extends Component {
           curve="monotoneX"
           data={this.state.data}
           colors="set1"
-          colorBy={this.getColor}
+          colorBy={(d) => ColorHelper.getColorFromString(d.id)}
           animate={this.state.filter.animate}
           motionStiffness={200}
           motionDamping={20}
@@ -145,10 +137,10 @@ class EmissionsPerCountry extends Component {
             "max": 2012,
           }}
           yScale={{
-            "type": yType,
+            "type": this.state.yType,
             "base": 10,
-            "min": yMin,
-            "max": yMax
+            "min": this.state.yMin,
+            "max": this.state.yMax
           }}
           axisBottom={{
             "orient": "bottom",
