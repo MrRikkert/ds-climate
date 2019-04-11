@@ -31,7 +31,7 @@ class FilterPanel extends Component {
         {this.getListItem("Select countries", <CountrySelector {...this.props} name="CountrySelector" />)}
         {this.getListItem("Select metric", <MetricSelector {...this.props} name="MetricSelector" />)}
         {this.getListItem("Select emission type", <EmissionTypeSelector {...this.props} name="EmissionTypeSelector" />)}
-        {this.getListItem("Select year", <YearSelector {...this.props} />)}
+        {this.getListItem("Select year", <YearSelector {...this.props} name="YearSelector" />)}
         {this.getListItem("Toggle logarithmic y-scale", <LogAxisToggle {...this.props} axis="y" name="LogAxisToggleY" />)}
         {this.getListItem("Toggle logarithmic x-scale", <LogAxisToggle {...this.props} axis="x" name="LogAxisToggleX" />)}
         {this.getListItem("Toggle animations", <AnimationToggle {...this.props} name="AnimationToggle" />)}

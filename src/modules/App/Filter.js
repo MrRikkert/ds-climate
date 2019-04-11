@@ -49,7 +49,7 @@ class Filter extends Component {
   getFilteredData = (filterYear = true, filterCountries = true) => {
     let data = this.state.fullData
       .filter((d) => {
-        return (parseInt(d.year) >= 1970 && parseInt(d.year) <= 2012)
+        return (parseInt(d.year) >= 1970 && parseInt(d.year) <= 2014)
       })
       .filter((d) => {
         return !(regions.indexOf(d.country) > -1)

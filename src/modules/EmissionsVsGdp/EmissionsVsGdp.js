@@ -4,6 +4,7 @@ import "./EmissionsVsGdp.css"
 import AnimationToggle from "../Sidebar/FilterPanel/AnimationToggle/AnimationToggle"
 import MetricSelector from "../Sidebar/FilterPanel/MetricSelector/MetricSelector"
 import EmissionTypeSelector from "../Sidebar/FilterPanel/EmissionTypeSelector/EmissionTypeSelector"
+import YearSelector from "../Sidebar/FilterPanel/YearSelector/YearSelector"
 
 class EmissionVsGdp extends Component {
   state = {
@@ -21,7 +22,7 @@ class EmissionVsGdp extends Component {
     yMax: 100,
     yMin: 1,
     xMin: 1,
-    xMax: 1000,
+    xMax: 180000,
     yType: "linear",
     xType: "linear"
   }
@@ -38,7 +39,8 @@ class EmissionVsGdp extends Component {
       MetricSelector.name,
       "LogAxisToggleX",
       "LogAxisToggleY",
-      EmissionTypeSelector.name
+      EmissionTypeSelector.name,
+      YearSelector.name
     ])
   }
 
@@ -118,9 +120,13 @@ class EmissionVsGdp extends Component {
 
     this.setState({
       data: data,
-      yMax: yMax > yMin ? 1000000 : 10,
+      yMax: yMax > yMin ? 10500000 : 10,
       yMin: yMin < yMax ? yMin : 1,
     })
+  }
+
+  getColor = () => {
+    return "#3498DB"
   }
 
   render() {
@@ -131,6 +137,7 @@ class EmissionVsGdp extends Component {
           curve="monotoneX"
           data={this.state.data}
           colors="set1"
+          colorBy={this.getColor}
           animate={this.state.filter.animate}
           motionStiffness={200}
           motionDamping={20}
