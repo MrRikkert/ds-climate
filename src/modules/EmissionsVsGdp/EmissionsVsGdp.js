@@ -127,6 +127,7 @@ class EmissionVsGdp extends Component {
     return (
       <div className="emission-line-graph">
         <ResponsiveScatterPlot
+          symbolSize={8}
           curve="monotoneX"
           data={this.state.data}
           colors="set1"
@@ -158,7 +159,7 @@ class EmissionVsGdp extends Component {
             "tickPadding": 5,
             "tickRotation": 90,
             "tickValues": 10,
-            "legend": "Year",
+            "legend": "GDP per Capita",
             "legendOffset": 70,
             "legendPosition": "middle"
           }}

@@ -5,9 +5,8 @@ import ColorHelper from '../../../../helpers/ColorHelper';
 
 const ValueContainer = ({ children, ...props }) => (
   <components.ValueContainer {...props}>
-    {children[0].length > 0 &&
-      <span>Selected countries: {children[0].length}</span>
-    }
+    {children[0] != null && children[0].length > 0 &&
+      <span>({children[0].length})</span>}
     {children}
   </components.ValueContainer>
 );
