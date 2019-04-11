@@ -3,14 +3,6 @@ import Select, { components } from 'react-select';
 import "./CountrySelector.css"
 import ColorHelper from '../../../../helpers/ColorHelper';
 
-const MultiValueContainer = (props) => {
-  return (
-    <div>
-      <span>hallo</span>
-    </div>
-  );
-};
-
 const ValueContainer = ({ children, ...props }) => (
   <components.ValueContainer {...props}>
     {children[0].length > 0 &&
