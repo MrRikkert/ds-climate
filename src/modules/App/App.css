@@ -10,7 +10,8 @@
   margin-bottom: 0px;
   width: 300px;
   resize: horizontal;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .content {
