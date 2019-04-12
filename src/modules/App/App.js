@@ -11,7 +11,8 @@ const metrics = [
   { label: "normal", value: 1 },
   { label: "per population", value: 2 },
   { label: "per GDP per capita", value: 3 },
-  { label: "per area (sq.km)", value: 4 }
+  { label: "per GDP", value: 4 },
+  { label: "per area (sq.km)", value: 5 }
 ]
 
 const emissionTypes = [
