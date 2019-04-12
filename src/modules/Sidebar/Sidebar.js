@@ -6,6 +6,7 @@ import {
 } from 'react-accessible-accordion';
 import RoutePanel from "./RoutePanel/RoutePanel"
 import LegendPanel from "./LegendPanel/LegendPanel"
+import InsightsPanel from "./InsightsPanel/InsightsPanel"
 
 class SideBar extends Component {
   state = {
@@ -20,6 +21,7 @@ class SideBar extends Component {
           <RoutePanel {...this.props} />
           <FilterPanel {...this.props} />
           <LegendPanel {...this.props} />
+          <InsightsPanel {...this.props} />
         </Accordion>
       </div>
     );

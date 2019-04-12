@@ -95,7 +95,8 @@ class App extends Filter {
               toggleAnimations={this.toggleAnimations}
               selectedFilters={this.state.selectedFilters}
               title={this.state.title}
-              emissionTypes={this.state.emissionTypes} />
+              emissionTypes={this.state.emissionTypes}
+              setFilters={this.setFilters} />
           </div>
         </div>
       </Router>

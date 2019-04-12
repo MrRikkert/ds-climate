@@ -186,6 +186,20 @@ class Filter extends Component {
     })
   }
 
+  setFilters = (countries, year, yLog, xLog, metric, emissionType) => {
+    let filter = this.state.filter
+    this.updateSelectedCountries(this.state.allCountries.filter((d) => { return countries.indexOf(d.label) > -1 }))
+    this.updateSelectedMetric(metric)
+    this.updateSelectedEmissionType(emissionType)
+
+    filter.year = year
+    filter.yLog = yLog
+    filter.xLog = xLog
+
+    this.setState({
+      filter: filter
+    })
+  }
 }
 
 const regions = [
