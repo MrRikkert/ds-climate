@@ -45,6 +45,17 @@ class EmissionVsGdpInsights extends Component {
     )
   }
 
+  globalDecreaseEmissionPerGdp = () => {
+    return (
+      <li onClick={() => this.props.setFilters(["Netherlands", "Belgium", "Spain", "France", "Portugal", "France", "Germany", "Sweden", "United States", "Japan"], 2014, false, false, this.props.metrics[3], this.props.emissionTypes[4])}>
+        <div className="insight-name">Global decrease in emissions per GDP</div>
+        <div>
+          Here you can see that most countries are steadily decreasing in emissions per GDP. Some countries not shown here fall more  out of line but almost all countries are decreasing
+        </div>
+      </li>
+    )
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -52,6 +63,7 @@ class EmissionVsGdpInsights extends Component {
         {this.oilCrisisInsight()}
         {this.iraq1997Insight()}
         {this.chinaPopulationGrowth()}
+        {this.globalDecreaseEmissionPerGdp()}
       </React.Fragment>
     );
   }
