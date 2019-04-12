@@ -23,11 +23,35 @@ class EmissionVsGdpInsights extends Component {
     )
   }
 
+  iraq1997Insight = () => {
+    return (
+      <li onClick={() => this.props.setFilters(["Iran, Islamic Rep."], 2014, false, false, this.props.metrics[0], this.props.emissionTypes[0])}>
+        <div className="insight-name">Iraqi Kurdish Civil War</div>
+        <div>
+          The sudden increase in emission in 1997 is likely caused by the end of the <a href="https://en.wikipedia.org/wiki/Iraqi_Kurdish_Civil_War" target="_blank" rel="noopener noreferrer">Iraqi Kurdish Civil War</a>
+        </div>
+      </li>
+    )
+  }
+
+  chinaPopulationGrowth = () => {
+    return (
+      <li onClick={() => this.props.setFilters(["China"], 2014, false, false, this.props.metrics[0], this.props.emissionTypes[0])}>
+        <div className="insight-name">2001 China population growth</div>
+        <div>
+          This huge increase in emission in 2001 could be explained by a population growth but if you select the "per citizen" metric you see that the emissions per person also increased
+        </div>
+      </li>
+    )
+  }
+
   render() {
     return (
       <React.Fragment>
         {this.spainInsight()}
         {this.oilCrisisInsight()}
+        {this.iraq1997Insight()}
+        {this.chinaPopulationGrowth()}
       </React.Fragment>
     );
   }

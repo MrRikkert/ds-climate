@@ -16,6 +16,7 @@
 
 .insights-list li:hover {
   background-color: #CCCCCC;
+  cursor: pointer;
 }
 
 .insight-name {

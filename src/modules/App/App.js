@@ -9,7 +9,7 @@ import './App.css';
 
 const metrics = [
   { label: "normal", value: 1 },
-  { label: "per population", value: 2 },
+  { label: "per citizen", value: 2 },
   { label: "per GDP per capita", value: 3 },
   { label: "per GDP", value: 4 },
   { label: "per area (sq.km)", value: 5 }

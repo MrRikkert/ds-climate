@@ -164,7 +164,7 @@ class Filter extends Component {
     this.setState({
       allCountries: this.state.fullData
         .filter((d) => {
-          return parseInt(d.year) === 2012
+          return (parseInt(d.year) === 2012 && regions.indexOf(d.country) === -1)
         })
         .map((d) => {
           return {
