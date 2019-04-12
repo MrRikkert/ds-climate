@@ -22,7 +22,7 @@ class EmissionVsGdp extends Component {
     yMax: 100,
     yMin: 1,
     xMin: 1,
-    xMax: 180000,
+    xMax: 18000000000000,
     yType: "linear",
     xType: "linear"
   }
@@ -99,7 +99,7 @@ class EmissionVsGdp extends Component {
               let divider = this.props.getDivider(d)
               let metric = this.state.filter.emissionType ? this.state.filter.emissionType.value : 0
 
-              let x = d.gdp_pc
+              let x = d.gdp
               let y = this.divide(d[metric], divider)
 
               if (y) {
@@ -136,7 +136,7 @@ class EmissionVsGdp extends Component {
         <table>
           <tbody>
             <tr>
-              <td>GDP per Capita: </td>
+              <td>GDP: </td>
               <td>{parseFloat(d.x).toExponential(2)}</td>
             </tr>
             <tr>
@@ -186,8 +186,8 @@ class EmissionVsGdp extends Component {
             "tickSize": 5,
             "tickPadding": 5,
             "tickRotation": 90,
-            "tickValues": 10,
-            "legend": "GDP per Capita",
+            "tickValues": 5, //["0", "2e+12", "4e+12", "6e+12", "8e+12", "10e+12", "12e+12", "14e+12", "16e+12", "18e+12"],
+            "legend": "GDP",
             "legendOffset": 70,
             "legendPosition": "middle"
           }}
