@@ -24,7 +24,8 @@ class EmissionVsGdp extends Component {
     xMin: 1,
     xMax: 18000000000000,
     yType: "linear",
-    xType: "linear"
+    xType: "linear",
+    xValues: [],
   }
 
   async componentDidMount() {
@@ -53,7 +54,8 @@ class EmissionVsGdp extends Component {
         filter: this.props.filter,
         yType: yType,
         xType: xType,
-        xMin: this.state.filter.xLog ? 50 : 0
+        xMin: this.state.filter.xLog ? 50 : 0,
+        xValues: this.state.filter.xLog ? ["1e+2", "1e+4", "1e+6", "1e+8", "1e+10", "1e+12", "1e+14"] : ["0", "2e+12", "4e+12", "6e+12", "8e+12", "10e+12", "12e+12", "14e+12", "16e+12", "18e+12"]
       })
       this.transformData()
     }
@@ -165,8 +167,8 @@ class EmissionVsGdp extends Component {
           tooltip={this.getToolTip}
           margin={{
             "top": 15,
-            "right": 10,
-            "bottom": 80,
+            "right": 30,
+            "bottom": 60,
             "left": 90
           }}
           xScale={{
@@ -184,11 +186,11 @@ class EmissionVsGdp extends Component {
           axisBottom={{
             "orient": "bottom",
             "tickSize": 5,
-            "tickPadding": 5,
-            "tickRotation": 90,
-            "tickValues": 5, //["0", "2e+12", "4e+12", "6e+12", "8e+12", "10e+12", "12e+12", "14e+12", "16e+12", "18e+12"],
+            "tickPadding": 20,
+            "tickRotation": 0,
+            "tickValues": this.state.xValues,
             "legend": "GDP",
-            "legendOffset": 70,
+            "legendOffset": 50,
             "legendPosition": "middle"
           }}
           axisLeft={{
