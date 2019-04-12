@@ -15,7 +15,7 @@ class EmissionVsGdpInsights extends Component {
   oilCrisisInsight = () => {
     return (
       <li onClick={() => this.props.setFilters(["Netherlands", "Belgium", "Iraq"], 2014, false, false, this.props.metrics[0], this.props.emissionTypes[0])}>
-        <div className="insight-name">1979 oil crisi</div>
+        <div className="insight-name">1979 oil crisis</div>
         <div>
           This huge drop in emissions in various countries was caused by the <a href="https://en.wikipedia.org/wiki/1979_oil_crisis" target="_blank" rel="noopener noreferrer">1979 oil crisis</a> which caused oil prices to increase dramatically and thus lower the use of oil
         </div>
