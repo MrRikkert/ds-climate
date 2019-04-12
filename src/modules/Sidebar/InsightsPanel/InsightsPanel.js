@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { AccordionItem, AccordionItemButton, AccordionItemHeading, AccordionItemPanel } from 'react-accessible-accordion';
 import "./InsightPanel.css";
 import EmissionVsGdpInsights from "./EmissionVsGdpInsights"
+import TreemapInsights from "./TreemapInsights"
+import { withRouter } from 'react-router-dom';
 
 class InsightsPanel extends Component {
   state = {
@@ -9,6 +11,7 @@ class InsightsPanel extends Component {
   };
 
   render() {
+    let path = this.props.location.pathname
     return (
       <AccordionItem uuid={"insights"}>
         <AccordionItemHeading>
@@ -18,7 +21,8 @@ class InsightsPanel extends Component {
         </AccordionItemHeading>
         <AccordionItemPanel>
           <ul className="insights-list">
-            <EmissionVsGdpInsights {...this.props} />
+            {path === "/emission-per-country" && <EmissionVsGdpInsights {...this.props} />}
+            {path === "/treemap" && <TreemapInsights {...this.props} />}
           </ul>
         </AccordionItemPanel>
       </AccordionItem>
@@ -26,4 +30,4 @@ class InsightsPanel extends Component {
   }
 }
 
-export default InsightsPanel;
+export default withRouter(InsightsPanel);
