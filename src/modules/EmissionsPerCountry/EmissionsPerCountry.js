@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import { ResponsiveLine } from '@nivo/line'
 import "./EmissionsPerCountry.css"
 import ColorHelper from "../../helpers/ColorHelper"
-import CountrySelector from "../Sidebar/FilterPanel/CountrySelector/CountrySelector"
-import AnimationToggle from "../Sidebar/FilterPanel/AnimationToggle/AnimationToggle"
-import MetricSelector from "../Sidebar/FilterPanel/MetricSelector/MetricSelector"
-import EmissionTypeSelector from "../Sidebar/FilterPanel/EmissionTypeSelector/EmissionTypeSelector"
 
 class EmissionsPerCountry extends Component {
   state = {
@@ -33,11 +29,11 @@ class EmissionsPerCountry extends Component {
     this.props.setTitle("emissions per country (kt)")
 
     this.props.setAvailibleFilters([
-      AnimationToggle.name,
-      CountrySelector.name,
-      MetricSelector.name,
+      "AnimationToggle",
+      "CountrySelector",
+      "MetricSelector",
       "LogAxisToggleY",
-      EmissionTypeSelector.name
+      "EmissionTypeSelector"
     ])
   }
 

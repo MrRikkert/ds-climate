@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { ResponsiveScatterPlot } from '@nivo/scatterplot'
 import "./EmissionsVsGdp.css"
-import AnimationToggle from "../Sidebar/FilterPanel/AnimationToggle/AnimationToggle"
-import MetricSelector from "../Sidebar/FilterPanel/MetricSelector/MetricSelector"
-import EmissionTypeSelector from "../Sidebar/FilterPanel/EmissionTypeSelector/EmissionTypeSelector"
-import YearSelector from "../Sidebar/FilterPanel/YearSelector/YearSelector"
 
 class EmissionVsGdp extends Component {
   state = {
@@ -36,12 +32,12 @@ class EmissionVsGdp extends Component {
     this.props.setTitle("emissions per country (kt)")
 
     this.props.setAvailibleFilters([
-      AnimationToggle.name,
-      MetricSelector.name,
+      "AnimationToggle",
+      "MetricSelector",
       "LogAxisToggleX",
       "LogAxisToggleY",
-      EmissionTypeSelector.name,
-      YearSelector.name
+      "EmissionTypeSelector",
+      "YearSelector"
     ])
   }
 

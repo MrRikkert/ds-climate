@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import { ResponsiveTreeMap } from '@nivo/treemap'
 import ColorHelper from '../../helpers/ColorHelper';
 import "./Treemap.css"
-import CountrySelector from "../Sidebar/FilterPanel/CountrySelector/CountrySelector"
-import AnimationToggle from "../Sidebar/FilterPanel/AnimationToggle/AnimationToggle"
-import MetricSelector from "../Sidebar/FilterPanel/MetricSelector/MetricSelector"
-import YearSelector from "../Sidebar/FilterPanel/YearSelector/YearSelector"
 
 class Treemap extends Component {
   state = {
@@ -21,10 +17,10 @@ class Treemap extends Component {
     this.props.setTitle("CO2 emissions By fuel burned (kt)")
 
     this.props.setAvailibleFilters([
-      AnimationToggle.name,
-      CountrySelector.name,
-      MetricSelector.name,
-      YearSelector.name
+      "AnimationToggle",
+      "CountrySelector",
+      "MetricSelector",
+      "YearSelector"
     ])
   }
 
