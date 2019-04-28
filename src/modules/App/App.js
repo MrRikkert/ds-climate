@@ -5,6 +5,7 @@ import Treemap from '../Treemap/Treemap';
 import EmissionsPerCountry from "../EmissionsPerCountry/EmissionsPerCountry"
 import EmissionVsGdp from "../EmissionsVsGdp/EmissionsVsGdp"
 import Filter from "./Filter"
+import Home from "../home/Home"
 import './App.css';
 
 const metrics = [
@@ -54,6 +55,11 @@ class App extends Filter {
   renderRoutes = () => {
     return (
       <Switch>
+        <Route
+          exact
+          path="/">
+          <Home />
+        </Route>
         <Route
           exact
           path="/treemap">
